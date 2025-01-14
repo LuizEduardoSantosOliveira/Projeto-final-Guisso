@@ -18,7 +18,7 @@
     </header>
 
     <main>
-         <form action="login.php" method="get">
+         <form action="../back-end/login.php" method="get">
             <label for="name">Nome:</label>
             <input type="text" name="name" id="name">
             <input type="submit" value="Enviar">

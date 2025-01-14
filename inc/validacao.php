@@ -2,14 +2,14 @@
 
 
  if (!isset($_SESSION['name'])){
-     header('Location: ./index.php');
+     header('Location: ../front-end/index.php');
 
      exit;  
  }
 
  if (isset($_GET['name'])){
    echo '<p>' . $_GET['name'] . '</p>';
-   echo "<a href='logout.php'></a>";
+   echo "<a href='../back-end/logout.php'></a>";
 
 }   
 ?>

@@ -37,7 +37,7 @@
             
         <?php
         } else {
-            header('Location: ../reserva/calendario.php');
+            header('Location: ../front-end/calendario.php');
             exit;
         }
         ?>

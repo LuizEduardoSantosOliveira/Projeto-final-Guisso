@@ -5,7 +5,7 @@
     
 
     $_SESSION['name'] = $_GET['name'];
-    header('Location:./calendario.php');
+    header('Location:../front-end/calendario.php');
 
 
 
