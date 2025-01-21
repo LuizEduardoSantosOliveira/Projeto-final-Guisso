@@ -22,9 +22,10 @@
         if (isset($_GET["date"])) {
             $data = $_GET["date"];
         ?>
-            <form action="salvar_reserva.php" method="get">
+            <form action="salvarReserva.php" method="get">
                 <label for="data">Data:</label>
                 <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
+                
                 <label for="ambiente">Ambiente:</label>
                 <select name="ambiente" id="ambiente">
                     <option value="labinfoa">Laboratório de Informática A</option>
