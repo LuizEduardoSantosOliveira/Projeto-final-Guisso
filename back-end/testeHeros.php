@@ -85,6 +85,7 @@ $reservas = R::findAll('reserva', ' ORDER BY data_reserva ASC, hora_inicio ASC')
 R::close();
 ?>
 <?php
+
 // Inclui o RedBean
 require 'rb.php';
 
