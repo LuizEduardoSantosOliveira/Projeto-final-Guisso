@@ -25,7 +25,16 @@
             <form action="salvarReserva.php" method="get">
                 <label for="data">Data:</label>
                 <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
-                
+
+                <label for="categoria">Categoria:</label>
+                <select name="categoria" id="categoria">
+                    <?php
+                        foreach($categorias as $categoria){
+
+                        }
+                    ?>
+                </select>
+
                 <label for="ambiente">Ambiente:</label>
                 <select name="ambiente" id="ambiente">
                     <option value="labinfoa">Laboratório de Informática A</option>
