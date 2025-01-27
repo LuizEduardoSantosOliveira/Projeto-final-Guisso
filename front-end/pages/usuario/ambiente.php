@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
     <title>Ambiente</title>
 </head>
 
@@ -21,9 +22,19 @@
         if (isset($_GET["date"])) {
             $data = $_GET["date"];
         ?>
-            <form action="sumario.php" method="get">
+            <form action="salvarReserva.php" method="get">
                 <label for="data">Data:</label>
                 <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
+
+                <label for="categoria">Categoria:</label>
+                <select name="categoria" id="categoria">
+                    <?php
+                        foreach($categorias as $categoria){
+
+                        }
+                    ?>
+                </select>
+
                 <label for="ambiente">Ambiente:</label>
                 <select name="ambiente" id="ambiente">
                     <option value="labinfoa">Laboratório de Informática A</option>
