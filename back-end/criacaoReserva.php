@@ -4,9 +4,9 @@ require  './class/rb.php';
 require 'criacaoUsuario.php'; // Incluindo o arquivo de criação de usuário
 
 // Configurando a conexão com o banco de dados
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 
-function criarReserva($data_reserva, $hora_inicio, $hora_fim, $usuario_id, $ambiente)
+
+function criarReserva($data_reserva, $hora_inicio, $hora_fim, $usuario_id, $ambiente, $nome)
 {
     // Criando a reserva
     $reserva = R::dispense('reserva');
@@ -14,6 +14,7 @@ function criarReserva($data_reserva, $hora_inicio, $hora_fim, $usuario_id, $ambi
     $reserva->hora_inicio = $hora_inicio;
     $reserva->hora_fim = $hora_fim;
     $reserva->ambiente = $ambiente;
+    $reserva -> nome = $nome;
 
     // Verificando o usuário
     $usuario = R::load('usuario', $usuario_id);
