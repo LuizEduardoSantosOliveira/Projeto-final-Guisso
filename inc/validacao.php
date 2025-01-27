@@ -2,7 +2,7 @@
 
 
  if (!isset($_SESSION['name'])){
-     header('Location: ../front-end/index.php');
+     header('Location: ../../../front-end/pages/usuario/login.php');
 
      exit;  
  }

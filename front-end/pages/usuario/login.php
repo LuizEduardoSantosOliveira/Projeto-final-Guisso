@@ -12,14 +12,14 @@
 <body>
     <header>
         <?php
-            include "../inc/cabecalho.php"
+            include "../../../inc/cabecalho.php"
                 
 
         ?>
     </header>
 
     <main>
-         <form action="../back-end/login.php" method="get">
+         <form action="../../../back-end/verificacaoLogin.php" method="get">
             <label for="name">Nome:</label>
             <input type="text" name="name" id="name">
             <input type="submit" value="Enviar">
@@ -28,8 +28,7 @@
 
     <footer>
         <?php
-            include "../inc/rodape.php"
-
+             include "../../../inc/rodape.php"
         ?>
     </footer>
 </body>

@@ -13,10 +13,13 @@ if ($paginaAtual !== 'index.php') {
 
 }
 
+
+
 if (isset($_SESSION['name'])) {
     echo '<h1>Login: ' . strtoupper($_SESSION['name']) . '</h1>';
             
-     echo '<a href="../back-end/logout.php">Logout</a>';
+    echo '<a href="../back-end/logout.php">Logout</a>';;
+
 
 }
 
@@ -24,3 +27,4 @@ if (isset($_SESSION['name'])) {
 
 
 ?>
+

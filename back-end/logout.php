@@ -6,7 +6,7 @@ if(session_start() == PHP_SESSION_NONE){
 unset($_SESSION['nome']);  
 session_destroy(); 
 
-header('Location: ../front-end/index.php');  
+header('Location: ../front-end/pages/usuario/index.php');  
 exit; 
 
 ?>

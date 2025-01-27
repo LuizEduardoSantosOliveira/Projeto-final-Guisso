@@ -1,40 +1,44 @@
 <?php
-require  './class/rb.php';
 
-require 'criacaoUsuario.php'; // Incluindo o arquivo de criação de usuário
-
-// Configurando a conexão com o banco de dados
+include './class/rb.php';
+include 'salvarusuario.php';
 
 
-function criarReserva($data_reserva, $hora_inicio, $hora_fim, $usuario_id, $ambiente, $nome)
+// Mostra o nome do usuário na sessão
+if (isset($_SESSION['name'])) {
+    echo "Nome do usuário na sessão: " . $_SESSION['name'];  
+} else {
+    echo "Nome do usuário não encontrado na sessão.";
+}
+
+// Função para criar a reserva
+function criarReserva($hora_inicio, $hora_fim)
 {
-    // Criando a reserva
-    $reserva = R::dispense('reserva');
-    $reserva->data_reserva = $data_reserva;
-    $reserva->hora_inicio = $hora_inicio;
-    $reserva->hora_fim = $hora_fim;
-    $reserva->ambiente = $ambiente;
-    $reserva -> nome = $nome;
+    // Verifique se o nome do usuário está na sessão
+    if (isset($_SESSION['name'])) {
+        // Criando a reserva
+        $reserva = R::dispense('reserva');
+        $reserva->data_reserva = $_GET['data'];
+        $reserva->hora_inicio = $hora_inicio;
+        $reserva->hora_fim = $hora_fim;
+        $reserva->ambiente = $_GET['ambiente'];
+        $reserva->nome = $_SESSION['name'];  // Nome obtido da sessão
+        $id_reserva = R::store($reserva);  // Cria a reserva
 
-    // Verificando o usuário
-    $usuario = R::load('usuario', $usuario_id);
-    if (!$usuario->id) {
-        throw new Exception("Usuário não encontrado");
+        // Agora, busque o usuário pelo nome na sessão
+        $usuario = R::findOne('usuario', 'nome = ?', [$_SESSION['name']]);  // Carrega o usuário pelo nome
+        if (!$usuario) {
+            throw new Exception("Usuário não encontrado");
+        }
+
+        // Associando o usuário à reserva
+        $reserva->usuario = $usuario;
+
+        // Salvando a reserva novamente, agora associada ao usuário
+        $id_reserva = R::store($reserva);
+        return $id_reserva;
+    } else {
+        throw new Exception("Nome do usuário não encontrado na sessão.");
     }
-    $reserva->usuario = $usuario;
-
-    // Salvando a reserva no banco
-    $id = R::store($reserva);
-    return $id;
 }
-
-try {
-    $usuario_id = 1; // Altere para um ID de usuário válido
-    $reserva_id = criarReserva('2025-01-20', '14:00:00', '15:00:00', $usuario_id, 'Lab B');
-    echo "Reserva criada com sucesso. ID: $reserva_id<br>";
-
-    $reserva_id = criarReserva('2025-08-10', '18:30:00', '20:00:00', $usuario_id, 'Lab A');
-    echo "Reserva criada com sucesso. ID: $reserva_id<br>";
-} catch (Exception $e) {
-    echo "Erro: " . $e->getMessage();
-}
+?>
