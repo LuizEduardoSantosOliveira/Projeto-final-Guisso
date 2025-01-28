@@ -10,7 +10,7 @@
 <body>
 
 
-
+<header>
 <nav>
     <li><a href="cadastrarUsuario.php">Cadastrar Usuário</a></li>
     <li><a href="criarAmbiente.php">Criar Ambiente</a></li>
@@ -21,6 +21,17 @@
     <li><a href="../usuario/todasReservas.php">Todas Reservas</a></li>
 
 </nav>
+</header>
+
+<main>
+
+</main>
+
+<footer>
+
+
+</footer>
+
 
 <div></div>
      

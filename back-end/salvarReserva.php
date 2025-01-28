@@ -2,6 +2,11 @@
 
 include './class/rb.php';
 include 'salvarusuario.php';
+include  '../inc/validacaodata.php';
+include  '../inc/validacao.php';
+
+
+
 
 
 // Mostra o nome do usuário na sessão
@@ -12,16 +17,16 @@ if (isset($_SESSION['name'])) {
 }
 
 // Função para criar a reserva
-function criarReserva($hora_inicio, $hora_fim)
-{
+
+
     // Verifique se o nome do usuário está na sessão
     if (isset($_SESSION['name'])) {
         // Criando a reserva
         $reserva = R::dispense('reserva');
         $reserva->data_reserva = $_GET['data'];
-        $reserva->hora_inicio = $hora_inicio;
-        $reserva->hora_fim = $hora_fim;
-        $reserva->ambiente = $_GET['ambiente'];
+        //$reserva->hora_inicio = $hora_inicio;
+        //$reserva->hora_fim = $hora_fim;
+       // $reserva->ambiente = $_GET['ambiente'];
         $reserva->nome = $_SESSION['name'];  // Nome obtido da sessão
         $id_reserva = R::store($reserva);  // Cria a reserva
 
@@ -40,5 +45,5 @@ function criarReserva($hora_inicio, $hora_fim)
     } else {
         throw new Exception("Nome do usuário não encontrado na sessão.");
     }
-}
+
 ?>

@@ -2,7 +2,7 @@
 
 
  if (!isset($_GET['data'])){
-    header('Location: ../reserva/calendario.php');
+    header('Location: ../front-end/pages/usuario/calendario.php');
     exit;
  }
 

@@ -7,8 +7,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 
-if ($paginaAtual !== 'index.php') {
-    echo '<a href="index.php">Home</a>';
+if ($paginaAtual !== 'login.php') {
+    echo '<a href="../../../front-end/pages/usuario/login.php">Home</a>';
     
 
 }
@@ -18,7 +18,9 @@ if ($paginaAtual !== 'index.php') {
 if (isset($_SESSION['name'])) {
     echo '<h1>Login: ' . strtoupper($_SESSION['name']) . '</h1>';
             
-    echo '<a href="../back-end/logout.php">Logout</a>';;
+    echo '<a href="../../../back-end/logout.php">Sair</a>
+'  
+;
 
 
 }

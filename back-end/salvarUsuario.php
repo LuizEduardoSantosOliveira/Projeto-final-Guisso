@@ -1,6 +1,7 @@
 <?php
 // Incluindo o RedBean
 require_once './class/rb.php';  // Substitua pelo caminho correto
+include  '../inc/validacao.php';
 
 session_start();
 
@@ -10,15 +11,14 @@ if (!R::testConnection()) {
     die('Falha na conexão com o banco de dados');
 }
 
-function criarUsuario($email, $senha)
+
 {
     // Verifica se o nome está na sessão
     if (isset($_SESSION['name'])) {
         // Criando um novo usuário no banco de dados
         $usuario = R::dispense('usuario');
         $usuario->nome = $_SESSION['name'];  // Pegando o nome da sessão
-        $usuario->email = $email;
-        $usuario->senha = password_hash($senha, PASSWORD_DEFAULT);
+        //$usuario->email = $email;
         $usuario->created_at = date('Y-m-d H:i:s');
 
         // Salvando o usuário no banco de dados
