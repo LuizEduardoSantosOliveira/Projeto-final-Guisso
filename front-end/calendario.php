@@ -73,7 +73,7 @@
                 }
 
                 $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
-                $linkReserva = "ambiente.php?date=$dataCompleta";
+                $linkReserva = "categoria.php?date=$dataCompleta";
                 $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
             }
 
