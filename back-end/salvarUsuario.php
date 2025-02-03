@@ -1,21 +1,31 @@
 <?php
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
+// Incluindo o RedBean
+require_once './class/rb.php';  // Substitua pelo caminho correto
+include  '../inc/validacao.php';
+
+session_start();
+
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');  // Substitua pelas suas credenciais
+
 if (!R::testConnection()) {
-    die('Conexão com o banco falhou');
+    die('Falha na conexão com o banco de dados');
 }
 
-function criarUsuario($nome, $email, $senha)
+
 {
+    // Verifica se o nome está na sessão
+    if (isset($_SESSION['name'])) {
+        // Criando um novo usuário no banco de dados
+        $usuario = R::dispense('usuario');
+        $usuario->nome = $_SESSION['name'];  // Pegando o nome da sessão
+        //$usuario->email = $email;
+        $usuario->created_at = date('Y-m-d H:i:s');
 
-    $usuario = R::dispense('usuario');
-    $usuario->nome = $nome;
-    $usuario->email = $email;
-    $usuario->senha = password_hash($senha, PASSWORD_DEFAULT);
-    $usuario->created_at = date('Y-m-d H:i:s');
-
-    $id = R::store($usuario);
-    return $id;
+        // Salvando o usuário no banco de dados
+        $id = R::store($usuario);  // Salvando o usuário na tabela 'usuario'
+        return $id;  // Retorna o ID do usuário recém-criado
+    } else {
+        throw new Exception("Nome do usuário não encontrado na sessão.");
+    }
 }
-$usuario_id = criarUsuario('João Silva', 'joao@email.com', 'senha123');
-$usuario_id = criarUsuario('Lucas Virginio', 'tchunga@email.com', 'oioi2324');
-$usuario_id = criarUsuario('Heros Augusto', 'herosaugusto@email.com', 'senha321');
+?>

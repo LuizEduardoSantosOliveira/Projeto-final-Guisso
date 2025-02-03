@@ -9,37 +9,31 @@
 </head>
 <body>
 
+
 <header>
-    <h1>Painel Admin</h1>
-    <nav>
-        <li><a href="cadastrarUsuario.php">Cadastrar Usuário</a></li>
-        <li><a href="criarAmbiente.php">Criar Ambiente</a></li>
-        <li><a href="criarCategoria.php">Criar Categoria</a></li>
-        <li><a href="todosUsuarios.php">Todos Usários</a></li>
-        <li><a href="todosAmbientes.php">Todos Ambientes</a></li>
-        <li><a href="todasCategorias.php">Todas Categorias</a></li>
-        <li><a href="../usuario/todasReservas.php">Todas Reservas</a></li>
-    </nav>
+<nav>
+    <li><a href="cadastrarUsuario.php">Cadastrar Usuário</a></li>
+    <li><a href="criarAmbiente.php">Criar Ambiente</a></li>
+    <li><a href="criarCategoria.php">Criar Categoria</a></li>
+    <li><a href="todosUsuarios.php">Todos Usários</a></li>
+    <li><a href="todosAmbientes.php">Todos Ambientes</a></li>
+    <li><a href="todasCategorias.php">Todas Categorias</a></li>
+    <li><a href="../usuario/todasReservas.php">Todas Reservas</a></li>
 
-
+</nav>
 </header>
-
 
 <main>
 
-
-
 </main>
-
 
 <footer>
 
 
 </footer>
 
-<div class="todos-usuarios">
 
-</div>
+<div></div>
      
 </body>
 </html>

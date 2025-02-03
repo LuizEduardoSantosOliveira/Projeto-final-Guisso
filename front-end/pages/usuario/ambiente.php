@@ -12,17 +12,17 @@
 <body>
     <header>
         <?php
-            include "../inc/cabecalho.php";
-            include "../inc/validacao.php";
+            include "../../../inc/cabecalho.php";
+            include "../../../inc/validacao.php";
         ?>
-    </header>
+    </header>   
 
     <main>
         <?php
         if (isset($_GET["date"])) {
             $data = $_GET["date"];
         ?>
-            <form action="salvarReserva.php" method="get">
+            <form action="../../../back-end/salvarReserva.php" method="get">
                 <label for="data">Data:</label>
                 <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
 
@@ -59,7 +59,7 @@
 
     <footer>
     <?php
-        include "../inc/rodape.php"
+        include "../../../inc/rodape.php";
 
     ?>
     </footer>

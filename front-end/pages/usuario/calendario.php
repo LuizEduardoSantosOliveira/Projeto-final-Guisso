@@ -30,8 +30,8 @@
 <body>
     <header>
         <?php
-        include "../inc/cabecalho.php";
-        include "../inc/validacao.php"
+        include "../../../inc/cabecalho.php";
+        include "../../../inc/validacao.php";
 
         ?>
     </header>
@@ -91,7 +91,7 @@
         ?>
         <h1>Calendário de Reservas</h1>
 
-        <form method="get" action="">
+        <form method="get" action="ambiente.php">
             <label for="month_year">Mês:</label>
             <input type="month" name="month_year" value="<?php echo $anoAtual . '-' . sprintf('%02d', $mesAtual); ?>" onchange="this.form.submit()">
 
@@ -107,7 +107,7 @@
 
     <footer>
         <?php
-        include "../inc/rodape.php"
+       include "../../../inc/rodape.php";
 
         ?>
     </footer>
