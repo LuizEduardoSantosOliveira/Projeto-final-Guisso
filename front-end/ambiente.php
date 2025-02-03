@@ -19,29 +19,23 @@
 
     <main>
         <?php
-        if (isset($_GET["date"])) && (isset($_GET['categoria'])) {
+        if ((isset($_GET["date"])) && (isset($_GET['categoria']))) {
             $data = $_GET["date"];
+            $categoria = $_GET['categoria'];
         ?>
             <form action="salvarReserva.php" method="get">
-                
+                <fieldset>
+                    <legend>Ambiente</legend>
                     <?php
-                        
-                        $categoria = $_GET['categoria'];
                         foreach ($ambientes as $id => $ambiente) {
                             if ($ambiente['categoria_id'] == $categoria) {
                                 echo '<option value="' . $ambiente['nome'] . '">' . $ambiente['nome'] . '</option>';
                             }
                         }
-                    }
                     ?>
-                    <!-- <option value="labinfoa">Laboratório de Informática A</option>
->>>>>>> 61e5d64 (alteração pra apresentar os ambientes com base na categoria, tá com erro mas depois eu corrijo)
-                    <option value="labinfob">Laboratório de Informática B</option>
-                    <option value="auditorio">Auditório</option>
-                    <option value="quadra">Quadra Poliesportiva</option>
-                    <option value="e estac">Estacionamento</option> -->
                 </select><br><br>
                 <input type="submit" value="Enviar">
+                </fieldset>
             </form>
 
         <?php
