@@ -8,22 +8,24 @@
 <body>
     <header>
         <?php
-            include "../inc/cabecalho.php";
-            include "../inc/validacao.php";
+            include "../../../inc/cabecalho.php";
+            include "../../../inc/validacao.php";
         ?>
     </header>
 
     <main>
        <?php
         if(isset($_GET["date"])){
-            $data = isset($_GET["date"]);
+            $data = $_GET["date"];
+
+        
        ?> 
 
        <form action="ambiente.php" method="get">
             <fieldset>
                 <legend>Categoria</legend>
-                <label for="data">Data:</label>
-                <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
+                <label for="date">Data:</label>
+                <input id="date" type="text" name="date" value="<?php echo $data; ?>" readonly><br><br>
                 <label for="categoria">Categoria</label>
                 <select name="categoria" id="categoria">
                     <?php
@@ -43,7 +45,7 @@
 
     <footer>
         <?php
-        include "../inc/rodape.php"
+        include "../../../inc/rodape.php"
 
         ?>
     </footer>

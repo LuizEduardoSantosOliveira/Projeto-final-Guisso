@@ -23,8 +23,8 @@
             $data = $_GET["date"];
         ?>
             <form action="../../../back-end/salvarReserva.php" method="get">
-                <label for="data">Data:</label>
-                <input id="data" type="text" name="data" value="<?php echo $data; ?>" readonly><br><br>
+                <label for="date">Data:</label>
+                <input id="date" type="text" name="date" value="<?php echo $data; ?>" readonly><br><br>
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
@@ -48,7 +48,8 @@
             
         <?php
         } else {
-            header('Location: ../front-end/calendario.php');
+            //header('Location: ../front-end/calendario.php');
+            echo "categoria não informada";
             exit;
         }
         ?>

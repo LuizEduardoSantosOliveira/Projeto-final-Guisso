@@ -3,9 +3,11 @@
 require_once './class/rb.php';  // Substitua pelo caminho correto
 include  '../inc/validacao.php';
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+ }
 
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');  // Substitua pelas suas credenciais
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'aluno');  // Substitua pelas suas credenciais
 
 if (!R::testConnection()) {
     die('Falha na conexão com o banco de dados');

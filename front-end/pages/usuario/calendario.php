@@ -91,7 +91,7 @@
         ?>
         <h1>Calendário de Reservas</h1>
 
-        <form method="get" action="ambiente.php">
+        <form method="get" action="categoria.php">
             <label for="month_year">Mês:</label>
             <input type="month" name="month_year" value="<?php echo $anoAtual . '-' . sprintf('%02d', $mesAtual); ?>" onchange="this.form.submit()">
 

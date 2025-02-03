@@ -23,10 +23,13 @@ if (isset($_SESSION['name'])) {
     if (isset($_SESSION['name'])) {
         // Criando a reserva
         $reserva = R::dispense('reserva');
-        $reserva->data_reserva = $_GET['data'];
+        $reserva->data_reserva = $_GET['date'];
         //$reserva->hora_inicio = $hora_inicio;
         //$reserva->hora_fim = $hora_fim;
-       // $reserva->ambiente = $_GET['ambiente'];
+        //$reserva->categoria = $_GET['categoria'];
+
+        $reserva->ambiente = $_GET['ambiente'];
+
         $reserva->nome = $_SESSION['name'];  // Nome obtido da sessão
         $id_reserva = R::store($reserva);  // Cria a reserva
 
