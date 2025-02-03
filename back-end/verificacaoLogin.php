@@ -14,6 +14,4 @@
         echo "Nome não informado!";
     }
 
-
-
 ?>
