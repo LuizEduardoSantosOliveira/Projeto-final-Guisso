@@ -17,8 +17,23 @@
        <?php
         if(isset($_GET["date"])){
             $data = $_GET["date"];
-
-        
+            
+            //arrays teste categoria e ambiente
+            $categorias = [
+                ['id' => 1, 'nome' => 'Tecnologia'],
+                ['id' => 2, 'nome' => 'Administração'],
+                ['id' => 3, 'nome' => 'Esportes'],
+                ['id' => 4, 'nome' => 'Educação']
+            ];
+            
+            // Mapeando ambientes para categorias
+            $ambientes = [
+                ['id' => 1, 'categoria_id' => 1, 'nome' => 'Laboratório de Informática A'], 
+                ['id' => 2, 'categoria_id' => 1, 'nome' => 'Laboratório de Informática B'], 
+                ['id' => 3, 'categoria_id' => 2, 'nome' => 'Auditório'], 
+                ['id' => 4, 'categoria_id' => 3, 'nome' => 'Quadra Poliesportiva'], 
+                ['id' => 5, 'categoria_id' => 4, 'nome' => 'Estacionamento']
+            ];
        ?> 
 
        <form action="ambiente.php" method="get">
