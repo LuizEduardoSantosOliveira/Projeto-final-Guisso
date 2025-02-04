@@ -7,6 +7,6 @@
     <title>Criação de categoria</title>
 </head>
 <body>
-    <h1>Tesste</h1>
+    <h1>Teste</h1>
 </body>
 </html>
