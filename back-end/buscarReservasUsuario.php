@@ -1,13 +1,6 @@
 <?php
 require '../../../back-end/class/rb.php';
-include '../inc/validacao.php';
-include 'salvarUsuario.php';
-include 'salvarReserva';
-
-// Inicia a sessão se ainda não foi iniciada
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+include '../../../inc/validacao.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['name'])) {
@@ -16,7 +9,7 @@ if (!isset($_SESSION['name'])) {
 }
 
 // Configuração da conexão com o banco de dados
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
 if (!R::testConnection()) {
     die('Falha na conexão com o banco de dados');
 }

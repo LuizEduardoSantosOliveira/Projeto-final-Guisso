@@ -144,13 +144,19 @@
             <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
         </div>
 
-        <?php if (count($reservas) > 0): ?>
+        <?php if (count($reservas) > 0):
+           
+            
+            
+            ?>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Data da Reserva</th>
                         <th>Status</th>
+                        <th>Categoria</th>
+                        <th>ambiente</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -164,6 +170,8 @@
                                     Ativa
                                 </span>
                             </td>
+                            <td><?= $reserva->categoria ?></td>
+                            <td><?= $reserva->ambiente ?></td>
                             <td class="actions">
                                 <a href="editar_reserva.php?id=<?= $reserva->id ?>"
                                     class="btn btn-edit">Editar</a>

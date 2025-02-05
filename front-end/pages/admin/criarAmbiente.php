@@ -11,6 +11,7 @@
         <?php
             include "../../../inc/validacao.php";
             include "../../../inc/cabecalho.php";
+            include "../../../back-end/buscarTodasCategorias.php";
         ?>
     </header>
     
@@ -19,11 +20,20 @@
             <fieldset>
                 <legend>Criar Ambiente</legend>
 
-                <label for="nome">Nome do Ambiente:</label>
-                <input type="text" name="nome" id="nome"><br><br>   
+                <label for="ambient">Nome do Ambiente:</label>
+                <input type="text" name="ambient" id="ambient"><br><br>   
 
-                <label for="descricao">Descrição do Ambiente:</label><br>
-                <textarea name="descricao" id="descricao" cols="80" rows="5"></textarea><br><br>
+                <label for="description">Descrição do Ambiente:</label><br>
+                <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
+
+                <label for="category">Categoria</label>
+                <select name="category" id="category">
+                    <?php
+                        foreach ($categorias as $categoria) {
+                            echo '<option value="' . $categoria->id . '">' . $categoria->nome . '</option>';    
+                        }
+                    ?>
+                </select>
 
                 <input type="submit" value="Enviar">
             </fieldset>

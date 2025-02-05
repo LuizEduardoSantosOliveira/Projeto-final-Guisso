@@ -18,8 +18,8 @@
 
         
         <form action="../../../back-end/salvarCategoria.php" method="get">
-            <label for="name">Nome da Categoria:</label>
-            <input type="text" name="name" id="name">
+            <label for="category">Nome da Categoria:</label>
+            <input type="text" name="category" id="category">
 
              <label for="description">Descrição da categoria:</label><br>
             <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>

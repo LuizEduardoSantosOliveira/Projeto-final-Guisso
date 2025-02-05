@@ -13,8 +13,7 @@ if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
     }
 }
-
-$categorias = R::findAll('categoria');
+$ambientes = R::findAll('ambiente');
 
         
 ?>

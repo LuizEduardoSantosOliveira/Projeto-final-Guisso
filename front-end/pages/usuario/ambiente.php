@@ -14,67 +14,64 @@
         <?php
             include "../../../inc/cabecalho.php";
             include "../../../inc/validacao.php";
+            include "../../../back-end/buscarTodosAmbientes.php";
+            include "../../../back-end/buscarTodasCategorias.php";
+
         ?>
     </header>   
 
     <main>
         <?php
-        if (isset($_GET["date"])) {
 
-            //arrays teste categoria e ambiente
-            $categorias = [
-                ['id' => 1, 'nome' => 'Tecnologia'],
-                ['id' => 2, 'nome' => 'Administração'],
-                ['id' => 3, 'nome' => 'Esportes'],
-                ['id' => 4, 'nome' => 'Educação']
-            ];
-            
-            // Mapeando ambientes para categorias para teste
-            $ambientes = [
-                ['id' => 1, 'categoria_id' => 1, 'nome' => 'Laboratório de Informática A'], 
-                ['id' => 2, 'categoria_id' => 1, 'nome' => 'Laboratório de Informática B'], 
-                ['id' => 3, 'categoria_id' => 2, 'nome' => 'Auditório'], 
-                ['id' => 4, 'categoria_id' => 3, 'nome' => 'Quadra Poliesportiva'], 
-                ['id' => 5, 'categoria_id' => 4, 'nome' => 'Estacionamento']
-            ];
+$categoria_id = $_GET['category'];
 
-            $data = $_GET["date"];
-            foreach ($categorias as $categoriakey) {
-                if($_GET['categoria'] == $categoriakey['id']){
-                    $categoria = $categoriakey;
-                }
-            }
-        ?>
+// Carregar a categoria do banco de dados
+$categoria = R::load('categoria', $categoria_id);
+
+if (!$categoria->id) {
+    die('Erro: Categoria não encontrada no banco.');
+}
+
+// Carregar os ambientes que pertencem a essa categoria
+$ambientes = R::find('ambiente', 'categoria_id = ?', [$categoria_id]);
+
+if (empty($ambientes)) {
+    die("Nenhum ambiente encontrado para a categoria ID: " . htmlspecialchars($categoria_id));
+};
+
+foreach ($ambientes as $ambiente) {
+    echo "ID: " . $ambiente->id . " - Nome: " . $ambiente->nome . " - Categoria: " . $ambiente->categoria_id . "<br>";
+};
+?>
+
+        
+        
+        
             <form action="../../../back-end/salvarReserva.php" method="get">
                 <fieldset>
                     <legend>Ambiente</legend>
 
                     <label for="date">Data: </label>
-                    <input id="date" type="text" name="date" value="<?php echo $data; ?>" readonly><br><br>
+                    <input id="date" type="text" name="date" value="<?php echo $_GET['date']; ?>" readonly><br><br>
 
-                    <label for="categoria">Categoria: </label>
-                    <input id="categoria" type="text" name="categoria" value="<?php echo $categoria['nome']; ?>" readonly><br><br>
+                    <label for="category">Categoria: </label>
+                    <input id="category" type="text" name="category" value="<?php echo $categoria -> nome ?>" readonly><br><br>
 
-                    <label for="ambiente">Ambiente: </label>
-                    <select name="ambiente" id="ambiente">
-                        <?php
-                            foreach ($ambientes as $ambiente) {
-                                if ($ambiente['categoria_id'] == $categoria['id']) {
-                                    echo '<option value="' . $ambiente['id'] . '">' . $ambiente['nome'] . '</option>';
-                                }
-                            }
-                        ?>
-                    </select><br><br>
+                    <label for="ambient">Ambiente: </label>
+                    <select name="ambient" id="ambient">
+                    <?php
+                        foreach ($ambientes as $ambiente) {
+                            $categoria = R::load('categoria', $ambiente->categoria); // Carrega a categoria pelo ID
+                            echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) . ' - ' . htmlspecialchars($categoria->nome) . '</option>';
+                        }
+                    ?>
+                   </select>
+
                 <input type="submit" value="Enviar">
                 </fieldset>
             </form>
             
         <?php
-        } else {
-            //header('Location: ../front-end/calendario.php');
-            echo "categoria não informada";
-            exit;
-        }
         ?>
 
 

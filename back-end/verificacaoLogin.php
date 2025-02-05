@@ -8,7 +8,8 @@
         $_SESSION['name'] = $_GET['name'];
     
         // Redirecionar para a página de reservas após o login
-        header('Location: ../front-end/pages/usuario/calendario.php');
+        
+        header('Location: salvarUsuario.php');
         exit;
     } else {
         echo "Nome não informado!";
