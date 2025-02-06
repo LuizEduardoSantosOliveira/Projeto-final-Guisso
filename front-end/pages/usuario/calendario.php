@@ -9,15 +9,16 @@
     <title>Calendário</title>
 
     <style>
-        table {
+        table{
             border-collapse: collapse;
+            border: 1px solid black;
             margin: 0 auto;
         }
-
         th,
         td {
             padding: 10px;
             text-align: center;
+            border: 1px solid black;
         }
 
         caption {
@@ -48,50 +49,60 @@
                 $anoAtual = $parsedDate['year'];
             }
 
-            function gerarCalendario($mes, $ano)
-        {
-            $diaInicial = date('w', strtotime("$ano-$mes-01"));
-            $totalDias = date('t', strtotime("$ano-$mes-01"));
-            $nomeMeses = [
-                1 => 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-            ];
-            $mes = max(1, min(12, $mes)); 
-
-            $calendario = "<table border='1'>";
-            $calendario .= "<caption>{$nomeMeses[$mes]} de $ano</caption>";
-            $calendario .= "<tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr>";
-            $calendario .= "<tr>";
-
-            for ($i = 0; $i < $diaInicial; $i++) {
-                $calendario .= "<td></td>";
-            }
-
-            for ($dia = 1; $dia <= $totalDias; $dia++) {
-                if (($dia + $diaInicial - 1) % 7 == 0 && $dia != 1) {
-                    $calendario .= "</tr><tr>";
-                }
-
-                $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
-                $linkReserva = "categoria.php?date=$dataCompleta";
-                $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
-            }
-
-            $espacosRestantes = 7 - (($totalDias + $diaInicial) % 7);
-            if ($espacosRestantes < 7) {
-                for ($i = 0; $i < $espacosRestantes; $i++) {
+            function gerarCalendario($mes, $ano) 
+                $nomeMeses = [
+                    1 => 'Janeiro', 
+                    2 => 'Fevereiro', 
+                    3 => 'Março', 
+                    4 => 'Abril', 
+                    5 => 'Maio', 
+                    6 => 'Junho',
+                    7 => 'Julho', 
+                    8 => 'Agosto', 
+                    9 => 'Setembro', 
+                    10 => 'Outubro', 
+                    11 => 'Novembro', 
+                    12 => 'Dezembro'
+                ];
+                
+                $mes = max(1, min(12, (int)$mes));
+                $diaInicial = date('w', strtotime("$ano-$mes-01"));
+                $totalDias = date('t', strtotime("$ano-$mes-01"));
+                
+                $calendario = "<h2>{$nomeMeses[$mes]} de $ano</h2>\n";
+                $calendario .= "<table>\n";
+                $calendario .= "<tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr>\n";
+                $calendario .= "<tr>";
+                
+                for ($i = 0; $i < $diaInicial; $i++) {
                     $calendario .= "<td></td>";
                 }
-            }
-
-            $calendario .= "</tr></table>";
-
-            return $calendario;
-        }
+                
+                for ($dia = 1; $dia <= $totalDias; $dia++) {
+                    if (($dia + $diaInicial - 1) % 7 == 0 && $dia != 1) {
+                        $calendario .= "</tr><tr>";
+                    }
+                    
+                    $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
+                    $linkReserva = "categoria.php?date=" . $dataCompleta;
+                    $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
+                }
+                
+                $espacosRestantes = 7 - (($totalDias + $diaInicial) % 7);
+                if ($espacosRestantes < 7) {
+                    for ($i = 0; $i < $espacosRestantes; $i++) {
+                        $calendario .= "<td></td>";
+                    }
+                }
+                
+                $calendario .= "</tr>\n</table>";
+                
+                return $calendario;
+            
         ?>
         <h1>Calendário de Reservas</h1>
 
-        <form method="get" action="categoria.php">
+        <form method="get" action="">
             <label for="month_year">Mês:</label>
             <input type="month" name="month_year" value="<?php echo $anoAtual . '-' . sprintf('%02d', $mesAtual); ?>" onchange="this.form.submit()">
 

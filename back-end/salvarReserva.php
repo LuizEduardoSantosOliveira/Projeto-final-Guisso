@@ -11,20 +11,19 @@ if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
     }
 }
-
+    
   
     if (isset($_SESSION['name'])) {
         $reserva = R::dispense('reserva');
         $reserva->data_reserva = $_GET['date'];
-        $ambiente_id = $_GET['ambient'];
-        // Carregar a categoria do banco de dados
-        $categoria = R::load('ambiente', $ambient_id);
-        $reserva ->ambiente = $categoria -> nome;
         //$reserva->hora_inicio = $hora_inicio;
         //$reserva->hora_fim = $hora_fim;
-        //$reserva->ambiente = $_GET['ambient'];
         $reserva->nome = $_SESSION['name'];  
         $reserva->categoria  = $_GET["category"];
+
+        $ambiente_id = $_GET['ambient'];
+        $ambiente = R::load('ambiente', $ambiente_id);
+        $reserva -> ambiente = $ambiente -> nome;
         
        
 

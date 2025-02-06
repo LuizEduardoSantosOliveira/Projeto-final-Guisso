@@ -30,7 +30,7 @@ $categoria = R::load('categoria', $categoria_id);
 
 if (!$categoria->id) {
     die('Erro: Categoria não encontrada no banco.');
-}
+};
 
 // Carregar os ambientes que pertencem a essa categoria
 $ambientes = R::find('ambiente', 'categoria_id = ?', [$categoria_id]);
