@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserva</title>
-</head>
-<body>
-    
-    
-</body>
-</html>
+<?php
+require '../../../back-end/class/rb.php';
+include '../../../inc/validacao.php';
+
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
+if (!R::testConnection()) {
+    die('Falha na conexão com o banco de dados');
+}
+
+
+$usuario = R::findAll("usuario");
+
+$reservas = R::findAll("reserva");
+
+R::close();
+
+?>

@@ -2,7 +2,7 @@
 require_once './class/rb.php';
 include '../inc/validacao.php';
 
-// Conexão com o banco de dados
+
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
     
@@ -17,9 +17,10 @@ if (!R::testConnection()) {
         
         $categoria = R::load('categoria', $_GET['category']);
         
-        $ambiente->categoria = $categoria;
+        $ambiente->categoria = $categoria -> nome;
         
         $id_ambiente = R::store($ambiente);
+        R::close();
         
         header('Location: ../front-end/pages/admin/todosAmbientes.php');
         exit();

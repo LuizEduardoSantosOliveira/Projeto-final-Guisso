@@ -29,8 +29,9 @@
                 <label for="category">Categoria</label>
                 <select name="category" id="category">
                     <?php
+                        $categorias = R::findAll('categoria');
                         foreach ($categorias as $categoria) {
-                            echo '<option value="' . $categoria->id . '">' . $categoria->nome . '</option>';    
+                            echo '<option value="' . $categoria->id . '">' . htmlspecialchars($categoria->nome) . '</option>';
                         }
                     ?>
                 </select>

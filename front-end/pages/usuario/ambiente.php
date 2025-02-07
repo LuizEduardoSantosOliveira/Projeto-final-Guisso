@@ -24,24 +24,12 @@
         <?php
 
 $categoria_id = $_GET['category'];
-
-// Carregar a categoria do banco de dados
 $categoria = R::load('categoria', $categoria_id);
 
 if (!$categoria->id) {
     die('Erro: Categoria não encontrada no banco.');
 };
-
-// Carregar os ambientes que pertencem a essa categoria
 $ambientes = R::find('ambiente', 'categoria_id = ?', [$categoria_id]);
-
-if (empty($ambientes)) {
-    die("Nenhum ambiente encontrado para a categoria ID: " . htmlspecialchars($categoria_id));
-};
-
-foreach ($ambientes as $ambiente) {
-    echo "ID: " . $ambiente->id . " - Nome: " . $ambiente->nome . " - Categoria: " . $ambiente->categoria_id . "<br>";
-};
 ?>
 
         
@@ -61,8 +49,8 @@ foreach ($ambientes as $ambiente) {
                     <select name="ambient" id="ambient">
                     <?php
                         foreach ($ambientes as $ambiente) {
-                            $categoria = R::load('categoria', $ambiente->categoria); // Carrega a categoria pelo ID
-                            echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) . ' - ' . htmlspecialchars($categoria->nome) . '</option>';
+                            $categoria = R::load('categoria', $ambiente->categoria); 
+                            echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) .  '</option>';
                         }
                     ?>
                    </select>

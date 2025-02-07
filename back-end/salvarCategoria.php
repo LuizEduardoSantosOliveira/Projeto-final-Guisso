@@ -1,7 +1,6 @@
 <?php
-
-require_once './class/rb.php';  
-include  '../inc/validacao.php';
+require_once './class/rb.php';
+include '../inc/validacao.php';
 
 
 if (!R::testConnection()) {
@@ -13,17 +12,15 @@ if (!R::testConnection()) {
 }
 
 
+$categoria = R::dispense('categoria');
+$categoria->nome = $_GET['category'];
+$categoria->descricao = $_GET['description'];
 
-   
-    if (isset($_GET['category'])) {
-        
-        $categoria = R::dispense('categoria');
-        $categoria->nome = $_GET['category'];  
-        $categoria ->descricao = $_GET["description"];
 
-        
-        $id = R::store($categoria);  
-        return $id;
-    }
+$id = R::store($categoria);
+R::close();
 
+
+header('Location: ../front-end/pages/admin/todasCategorias.php');
+exit();
 ?>

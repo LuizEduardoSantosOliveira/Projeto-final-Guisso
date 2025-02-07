@@ -16,5 +16,7 @@ if (!R::testConnection()) {
 
 $categorias = R::findAll('categoria');
 
+R::close();
+
         
 ?>

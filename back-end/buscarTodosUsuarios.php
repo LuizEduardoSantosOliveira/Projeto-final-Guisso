@@ -13,7 +13,7 @@ if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
     }
 }
-$ambientes = R::findAll('ambiente');
+$usuarios = R::findAll('usuario');
 
 R::close();
 

@@ -49,7 +49,9 @@
                 $anoAtual = $parsedDate['year'];
             }
 
-            function gerarCalendario($mes, $ano) 
+            function gerarCalendario($mes, $ano) {
+
+            
                 $nomeMeses = [
                     1 => 'Janeiro', 
                     2 => 'Fevereiro', 
@@ -98,7 +100,7 @@
                 $calendario .= "</tr>\n</table>";
                 
                 return $calendario;
-            
+            }
         ?>
         <h1>Calendário de Reservas</h1>
 

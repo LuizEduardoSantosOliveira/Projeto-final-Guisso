@@ -36,6 +36,7 @@ if (!R::testConnection()) {
         
         $reserva->usuario = $usuario;
         $id_reserva = R::store($reserva);  
+        R::close();
 
     
         
