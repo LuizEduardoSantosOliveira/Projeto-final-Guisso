@@ -27,7 +27,7 @@ if (isset($_SESSION['name'])) {
     R::close();
 
 
-    header('Location: ../front-end/pages/usuario/calendario.php');
+    header('Location: ../front-end/pages/usuario/home.php');
     return $id;
     exit;
 }

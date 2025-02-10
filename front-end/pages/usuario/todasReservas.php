@@ -148,7 +148,7 @@
                 <table>
                      <thead>
                          <tr>
-                             <th>ID</th>
+                             <th>Reservante</th>
                             <th>Data da Reserva</th>
                             <th>Status</th>
                             <th>Categoria</th>
@@ -158,8 +158,9 @@
                     </thead>
                 <tbody>
                     <?php foreach ($reservas as $reserva): ?>
+                       
                         <tr>
-                            <td><?= $reserva->id ?></td>
+                            <td><?= $reserva->usuario ?></td>
                             <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
                             <td>
                                 <span class="status status-ativa">

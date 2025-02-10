@@ -23,13 +23,13 @@
     <main>
         <?php
 
-        $categoria_id = $_GET['category'];
-        $categoria = R::load('categoria', $categoria_id);
+        $id_categoria= $_GET['category'];
+        $categoria = R::load('categoria', $id_categoria);
 
         if (!$categoria->id) {
             die('Erro: Categoria não encontrada no banco.');
         };
-        $ambientes = R::find('ambiente', 'id_categoria = ?', [$categoria_id]);
+        $ambientes = R::find('ambiente', 'id_categoria = ?', [$id_categoria]);
         ?>
 
 
