@@ -2,7 +2,7 @@
 require '../../../back-end/class/rb.php';
 include '../../../inc/validacao.php';
 
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 if (!R::testConnection()) {
     die('Falha na conexão com o banco de dados');
 }
