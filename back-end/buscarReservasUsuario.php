@@ -9,7 +9,7 @@ if (!isset($_SESSION['name'])) {
 }
 
 
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
+R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 if (!R::testConnection()) {
     die('Falha na conexão com o banco de dados');
 }

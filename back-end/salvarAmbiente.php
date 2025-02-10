@@ -4,7 +4,7 @@ include '../inc/validacao.php';
 
 
 if (!R::testConnection()) {
-    R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', 'root');
+    R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
     
     if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
@@ -18,6 +18,8 @@ if (!R::testConnection()) {
         $categoria = R::load('categoria', $_GET['category']);
         
         $ambiente->categoria = $categoria -> nome;
+
+        $ambiente->id_categoria = $categoria -> id; 
         
         $id_ambiente = R::store($ambiente);
         R::close();
