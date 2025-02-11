@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
     <title>Criação de categoria</title>
+
+
+    <style>
+
+        .erro{
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
     <header>
             <?php
                 include "../../../inc/validacao.php" ;
                 include "../../../inc/cabecalho.php";
+
+                if(isset($_GET['erro'])){
+                    echo '<p class = "erro">' . $_GET["erro"] . '<p>';
+                }else{
+                    echo "nao funcionou";
+                }
             ?>
     </header>
 
     <main>
 
         
-        <form action="../../../back-end/salvarCategoria.php" method="get">
+        <form action="../../../back-end/verificacaoCategoria.php" method="get">
             <label for="category">Nome da Categoria:</label>
             <input type="text" name="category" id="category">
 

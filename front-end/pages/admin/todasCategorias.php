@@ -124,6 +124,9 @@
     <header>
         <?php
             include "../../../back-end/buscarTodasCategorias.php";
+            include "../../../inc/validacao.php";
+            include "../../../inc/cabecalho.php";
+            
         
 
         ?>
@@ -163,7 +166,7 @@
                             <td class="actions">
                                 <a href="editar_reserva.php?id=<?= $categoria->id ?>"
                                     class="btn btn-edit">Editar</a>
-                                <a href="excluir_reserva.php?id=<?= $categoria->id ?>"
+                                <a href="../../../back-end/excluirCategoria.php?id=<?= $categoria->id ?>"
                                     class="btn btn-delete"
                                     onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                     Excluir
@@ -185,7 +188,10 @@
 
        
 <footer>
+<?php
+       include "../../../inc/rodape.php";
 
+        ?>
 </footer>
 
 </html>

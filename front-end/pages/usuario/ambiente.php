@@ -35,7 +35,7 @@
 
 
 
-        <form action="../../../back-end/salvarReserva.php" method="get">
+        <form action="../../../back-end/verificacaoReserva.php" method="get">
             <fieldset>
                 <legend>Ambiente</legend>
 
