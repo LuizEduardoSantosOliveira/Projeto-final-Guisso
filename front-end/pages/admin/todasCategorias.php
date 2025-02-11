@@ -132,7 +132,7 @@
             <div class="user-info">
                 <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
             </div>
-            <a href="nova_reserva.php" class="btn btn-new">Nova categoria</a>
+            <a href="criarCategoria.php" class="btn btn-new">Nova Categoria</a>
         </div>
     </header>
     
