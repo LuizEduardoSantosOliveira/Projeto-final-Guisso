@@ -135,7 +135,7 @@
             <div class="user-info">
                 <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
             </div>
-            <a href="cadastrarUsuario" class="btn btn-new">Novo Usuario</a>
+            <a href="cadastrarUsuario.php" class="btn btn-new">Novo Usuario</a>
         </div>
     </header>
     
