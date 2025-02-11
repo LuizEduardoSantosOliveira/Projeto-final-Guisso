@@ -12,65 +12,65 @@
 <body>
     <header>
         <?php
-            include "../../../inc/cabecalho.php";
-            include "../../../inc/validacao.php";
-            include "../../../back-end/buscarTodosAmbientes.php";
-            include "../../../back-end/buscarTodasCategorias.php";
+        include "../../../inc/cabecalho.php";
+        include "../../../inc/validacao.php";
+        include "../../../back-end/buscarTodosAmbientes.php";
+        include "../../../back-end/buscarTodasCategorias.php";
 
         ?>
-    </header>   
+    </header>
 
     <main>
         <?php
 
-$categoria_id = $_GET['category'];
-$categoria = R::load('categoria', $categoria_id);
+        $id_categoria= $_GET['category'];
+        $categoria = R::load('categoria', $id_categoria);
 
-if (!$categoria->id) {
-    die('Erro: Categoria não encontrada no banco.');
-};
-$ambientes = R::find('ambiente', 'categoria_id = ?', [$categoria_id]);
-?>
+        if (!$categoria->id) {
+            die('Erro: Categoria não encontrada no banco.');
+        };
+        $ambientes = R::find('ambiente', 'id_categoria = ?', [$id_categoria]);
+        ?>
 
-        
-        
-        
-            <form action="../../../back-end/salvarReserva.php" method="get">
-                <fieldset>
-                    <legend>Ambiente</legend>
 
-                    <label for="date">Data: </label>
-                    <input id="date" type="text" name="date" value="<?php echo $_GET['date']; ?>" readonly><br><br>
 
-                    <label for="category">Categoria: </label>
-                    <input id="category" type="text" name="category" value="<?php echo $categoria -> nome ?>" readonly><br><br>
 
-                    <label for="ambient">Ambiente: </label>
-                    <select name="ambient" id="ambient">
+        <form action="../../../back-end/salvarReserva.php" method="get">
+            <fieldset>
+                <legend>Ambiente</legend>
+
+                <label for="date">Data: </label>
+                <input id="date" type="text" name="date" value="<?php echo $_GET['date']; ?>" readonly><br><br>
+
+                <label for="category">Categoria: </label>
+                <input id="category" type="text" name="category" value="<?php echo $categoria->nome ?>" readonly><br><br>
+
+                <label for="ambient">Ambiente: </label>
+                <select name="ambient" id="ambient">
                     <?php
-                        foreach ($ambientes as $ambiente) {
-                            $categoria = R::load('categoria', $ambiente->categoria); 
-                            echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) .  '</option>';
-                        }
+                    foreach ($ambientes as $ambiente) {
+                        $categoria = R::load('categoria', $ambiente->categoria);
+                        echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) .  '</option>';
+                    }
                     ?>
-                   </select>
+                </select>
 
                 <input type="submit" value="Enviar">
-                </fieldset>
-            </form>
-            
+            </fieldset>
+        </form>
+
         <?php
         ?>
 
 
-        
+
     </main>
 
     <footer>
-    <?php
+        <?php
         include "../../../inc/rodape.php";
 
-    ?>
+        ?>
     </footer>
 </body>
 

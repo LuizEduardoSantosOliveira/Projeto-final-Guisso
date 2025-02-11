@@ -24,6 +24,7 @@ if (!R::testConnection()) {
         $ambiente_id = $_GET['ambient'];
         $ambiente = R::load('ambiente', $ambiente_id);
         $reserva -> ambiente = $ambiente -> nome;
+
         
        
 
@@ -34,7 +35,7 @@ if (!R::testConnection()) {
         }
 
         
-        $reserva->usuario = $usuario;
+        $reserva->usuario = $usuario -> nome;
         $id_reserva = R::store($reserva);  
         R::close();
 

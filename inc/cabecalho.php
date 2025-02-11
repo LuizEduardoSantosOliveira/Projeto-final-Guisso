@@ -1,5 +1,3 @@
-<h1>Desenvolvimento Web</h1>
-
 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
@@ -7,8 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 
-if ($paginaAtual !== 'login.php') {
-    echo '<a href="../../../front-end/pages/usuario/login.php">Home</a>';
+if ($paginaAtual !== 'home.php') {
+    echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
     
 
 }

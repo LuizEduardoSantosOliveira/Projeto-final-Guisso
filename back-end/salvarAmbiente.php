@@ -18,6 +18,8 @@ if (!R::testConnection()) {
         $categoria = R::load('categoria', $_GET['category']);
         
         $ambiente->categoria = $categoria -> nome;
+
+        $ambiente->id_categoria = $categoria -> id; 
         
         $id_ambiente = R::store($ambiente);
         R::close();
