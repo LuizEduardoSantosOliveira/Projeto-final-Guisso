@@ -123,7 +123,7 @@
 
     <header>
         <?php
-            include "../../../back-end/buscarTodasReservas.php"
+            include "../../../back-end/buscarTodasReservas.php";
             include "../../../inc/validacao.php";
             include "../../../inc/cabecalho.php";
         

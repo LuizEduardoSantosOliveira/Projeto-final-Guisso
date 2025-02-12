@@ -126,7 +126,7 @@
 
     <header>
         <?php
-            include "../../../back-end/buscarTodosUsuarios.php"
+            include "../../../back-end/buscarTodosUsuarios.php";
             include "../../../inc/validacao.php";
             include "../../../inc/cabecalho.php";
         

@@ -161,7 +161,7 @@
                     <?php foreach ($ambientes as $ambientes): ?>
                         <tr>
                             <td><?= $ambientes->id ?></td>
-                            <td><?= $ambientes->categoria ?></td>
+                            <td><?= $ambientes->categoria->nome ?></td>
                             <td><?= $ambientes->nome ?></td>
                             <td><?= $ambientes->descricao ?></td>
                             <td class="actions">
