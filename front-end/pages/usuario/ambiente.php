@@ -29,7 +29,7 @@
         if (!$categoria->id) {
             die('Erro: Categoria não encontrada no banco.');
         };
-        $ambientes = R::find('ambiente', 'id_categoria = ?', [$id_categoria]);
+        $ambientes = R::find('ambiente', 'categoria_id = ?', [$id_categoria]);
         ?>
 
 
