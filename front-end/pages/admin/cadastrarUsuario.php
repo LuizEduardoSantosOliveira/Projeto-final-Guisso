@@ -15,7 +15,7 @@
     </header>
 
     <main>
-        <form action="../../../back-end/salvarUsuario.php" method="get">
+        <form action="../../../back-end/salvarUsuarioTeste.php" method="post">
             <fieldset>
                 <legend>Cadastrar Usuário</legend>
                 <label for="username">Nome do Usuário:</label>
