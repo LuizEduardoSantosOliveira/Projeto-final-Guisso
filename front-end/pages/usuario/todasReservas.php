@@ -1,5 +1,5 @@
-
 <html lang="pt-br">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
@@ -121,85 +121,85 @@
     </style>
 </head>
 
-    <header>
-        <?php
-            include "../../../back-end/buscarTodasReservas.php"
-            include "../../../inc/validacao.php";
-            include "../../../inc/cabecalho.php";
-        
+<header>
+    <?php
+    include "../../../back-end/buscarTodasReservas.php";
+    include "../../../inc/validacao.php";
+    include "../../../inc/cabecalho.php";
 
-        ?>
-        <div class="container">
+
+    ?>
+    <div class="container">
         <div class="header">
             <div class="user-info">
                 <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
             </div>
             <a href="calendario.php" class="btn btn-new">Nova Reserva</a>
         </div>
-    </header>
-    
+</header>
 
-       <main>
-            <h1>Minhas Reservas</h1>
-             <div class="stats">
-                <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
-            </div>
 
-            <?php if (count($reservas) > 0):
-                ?>
-                <table>
-                     <thead>
-                         <tr>
-                             <th>Reservante</th>
-                            <th>Data da Reserva</th>
-                            <th>Status</th>
-                            <th>Categoria</th>
-                            <th>ambiente</th>
-                            <th>Ações</th>
-                         </tr>
-                    </thead>
-                <tbody>
-                    <?php foreach ($reservas as $reserva): ?>
-                       
-                        <tr>
-                            <td><?= $reserva->usuario ?></td>
-                            <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
-                            <td>
-                                <span class="status status-ativa">
-                                    Ativa
-                                </span>
-                            </td>
-                            <td><?= $reserva->categoria ?></td>
-                            <td><?= $reserva->ambiente ?></td>
-                            <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-edit">Editar</a>
-                                <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <div class="empty-state">
-                <p>Você ainda não possui reservas.</p>
-                <p>Clique em "Nova Reserva" para criar sua primeira reserva.</p>
-            </div>
-        <?php endif; ?>
+<main>
+    <h1>Minhas Reservas</h1>
+    <div class="stats">
+        <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
     </div>
 
-       </main> 
+    <?php if (count($reservas) > 0):
+    ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Reservante</th>
+                    <th>Data da Reserva</th>
+                    <th>Status</th>
+                    <th>Categoria</th>
+                    <th>ambiente</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reservas as $reserva): ?>
 
-       
+                    <tr>
+                        <td><?= $reserva->usuario ?></td>
+                        <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
+                        <td>
+                            <span class="status status-ativa">
+                                Ativa
+                            </span>
+                        </td>
+                        <td><?= $reserva->categoria ?></td>
+                        <td><?= $reserva->ambiente ?></td>
+                        <td class="actions">
+                            <a href="editar_reserva.php?id=<?= $reserva->id ?>"
+                                class="btn btn-edit">Editar</a>
+                            <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
+                                class="btn btn-delete"
+                                onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <div class="empty-state">
+            <p>Você ainda não possui reservas.</p>
+            <p>Clique em "Nova Reserva" para criar sua primeira reserva.</p>
+        </div>
+    <?php endif; ?>
+    </div>
+
+</main>
+
+
 <footer>
-<?php
-       include "../../../inc/rodape.php";
+    <?php
+    include "../../../inc/rodape.php";
 
-        ?>
+    ?>
 </footer>
 
 </html>

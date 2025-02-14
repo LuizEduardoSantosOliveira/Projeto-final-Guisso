@@ -1,5 +1,5 @@
 <?php
-require '../../../back-end/class/rb.php';
+require_once '../../../back-end/class/rb.php';
 include '../../../inc/validacao.php';
 
 
@@ -20,5 +20,3 @@ $usuario = R::findOne('usuario', 'nome = ?', [$_SESSION['name']]);
 $reservas = R::find('reserva', 'nome = ?', [$_SESSION['name']]);
 
 R::close();
-
-?>

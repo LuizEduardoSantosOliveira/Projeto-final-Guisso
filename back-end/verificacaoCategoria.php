@@ -1,25 +1,21 @@
 <?php
-    require_once 'class/rb.php';
-    if (!R::testConnection()) {
-        R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
-        
-        if (!R::testConnection()) {
-            die('Falha na conexão com o banco de dados');
-        }
-    }
+require_once 'class/rb.php';
+if (!R::testConnection()) {
+    R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 
-    $categoria = R::findOne('categoria', 'nome = ?', [$_GET['category']]);  
+    if (!R::testConnection()) {
+        die('Falha na conexão com o banco de dados');
+    }
+}
+
+$categoria = R::findOne('categoria', 'nome = ?', [$_GET['category']]);
 
 if (!$categoria) {
-    $category = urlencode($_GET['category']); 
-    $description = urlencode($_GET['description']); 
+    $category = urlencode($_GET['category']);
+    $description = urlencode($_GET['description']);
     header("Location: salvarCategoria.php?category=" . $category . "&description=" . $description);
-    exit(); 
-}else{
+    exit();
+} else {
     header("Location: ../front-end/pages/admin/criarCategoria.php?erro=Categoria já existente");
     exit();
 }
-
-
-
-?>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,50 +121,58 @@
         }
     </style>
 </head>
+
 <body>
-    
+
 
 
     <header>
         <?php
-            include "../../../back-end/buscarTodosUsuarios.php"
-            include "../../../inc/validacao.php";
-            include "../../../inc/cabecalho.php";
-        
+        include "../../../back-end/buscarTodosUsuarios.php";
+        include "../../../inc/validacaoAdmin.php";
+        include "../../../inc/cabecalho.php";
+        include "../../../inc/validacao.php";
+
 
         ?>
         <div class="container">
-        <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
+            <div class="header">
+                <div class="user-info">
+                    <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
+                </div>
+                <a href="cadastrarUsuario.php" class="btn btn-new">Novo Usuario</a>
             </div>
-            <a href="cadastrarUsuario.php" class="btn btn-new">Novo Usuario</a>
-        </div>
     </header>
-    
 
-       <main>
-            <h1>Usuários do Sistema</h1>
-             <div class="stats">
-                <strong>Total de Usuários:</strong> <?php echo count($usuarios); ?>
-            </div>
 
-            <?php if (count($usuarios) > 0):
-                ?>
-                <table>
-                     <thead>
-                         <tr>
-                            <th>Nome</th>
-                            <th>Criado em</th>
-                            <th>Ações</th>
+    <main>
+        <h1>Usuários do Sistema</h1>
+        <div class="stats">
+            <strong>Total de Usuários:</strong> <?php echo count($usuarios); ?>
+        </div>
 
-                         </tr>
-                    </thead>
+        <?php if (count($usuarios) > 0):
+        ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Criado em</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+
+                    </tr>
+                </thead>
                 <tbody>
                     <?php foreach ($usuarios as $usuario): ?>
                         <tr>
                             <td><?= $usuario->nome ?></td>
                             <td><?= date('d/m/Y', strtotime($usuario->criado_em)) ?></td>
+                            <td><?= $usuario->email ?></td>
+                            <td><?= $usuario->senha ?></td>
+                            <td><?= $usuario->tipo ?></td>
                             <td class="actions">
                                 <a href="editar_reserva.php?id=<?= $usuario->id ?>"
                                     class="btn btn-edit">Editar</a>
@@ -178,16 +187,16 @@
                 </tbody>
             </table>
         <?php endif; ?>
-    </div>
+        </div>
 
-       </main> 
+    </main>
 
-       
-<footer>
-<?php
-       include "../../../inc/rodape.php";
+
+    <footer>
+        <?php
+        include "../../../inc/rodape.php";
 
         ?>
-</footer>
+    </footer>
 
 </html>

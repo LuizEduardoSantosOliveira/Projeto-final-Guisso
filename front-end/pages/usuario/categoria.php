@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <?php
-            include "../../../inc/cabecalho.php";
-            include "../../../inc/validacao.php";
-            include "../../../back-end/buscarTodasCategorias.php";
+        include "../../../inc/cabecalho.php";
+        include "../../../inc/validacao.php";
+        include "../../../back-end/buscarTodasCategorias.php";
         ?>
     </header>
 
     <main>
 
 
-       <form action="ambiente.php" method="get">
+        <form action="ambiente.php" method="get">
             <fieldset>
                 <legend>Categoria</legend>
                 <label for="date">Data:</label>
@@ -25,17 +27,17 @@
                 <label for="category">Categoria</label>
                 <select name="category" id="category">
                     <?php
-                         foreach ($categorias as $categoria) {
-                            echo '<option value="' . $categoria->id . '">' . $categoria->nome . '</option>';    
-                        }
+                    foreach ($categorias as $categoria) {
+                        echo '<option value="' . $categoria->id . '">' . $categoria->nome . '</option>';
+                    }
                     ?>
                 </select>
                 <input type="submit" value="Enviar">
             </fieldset>
-       </form>
+        </form>
 
-       
-        
+
+
 
     </main>
 
@@ -46,4 +48,5 @@
         ?>
     </footer>
 </body>
+
 </html>
