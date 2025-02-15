@@ -20,9 +20,7 @@
 
         if (isset($_GET['erro'])) {
             echo '<p class = "erro">' . $_GET["erro"] . '<p>';
-        } else {
-            echo "nao funcionou";
-        }
+        } 
         ?>
     </header>
 

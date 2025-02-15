@@ -5,9 +5,17 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 
-
-if ($paginaAtual !== 'home.php') {
-    echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
+if($_SESSION['type'] === "admin"){
+    if ($paginaAtual !== 'adminPainel.php') {
+        echo '<a href="../../../front-end/pages/admin/AdminPainel.php">Home</a>';
+     
+    }
+    
+}else{
+    if ($paginaAtual !== 'home.php') {
+        echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
+       
+    }
 }
 
 

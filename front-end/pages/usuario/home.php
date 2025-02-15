@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="../../css/style.css">
     <title>Home</title>
 </head>
+
+<body>
+    
+
 <header>
 
     <?php
@@ -32,5 +36,5 @@
 
     ?>
 </footer>
-
+</body>
 </html>

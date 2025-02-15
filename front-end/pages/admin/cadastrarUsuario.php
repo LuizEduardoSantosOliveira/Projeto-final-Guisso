@@ -15,6 +15,10 @@
     include "../../../inc/cabecalho.php";
     include "../../../inc/validacaoAdmin.php";
     include "../../../inc/validacao.php";
+
+    if (isset($_GET['erro'])) {
+        echo '<p class = "erro">' . $_GET["erro"] . '<p>';
+    }
     ?>
 </header>
 
