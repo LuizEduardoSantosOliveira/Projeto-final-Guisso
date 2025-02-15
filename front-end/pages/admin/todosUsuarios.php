@@ -134,8 +134,6 @@
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
 
->>>>>>> origin/main
-
         ?>
         <div class="container">
             <div class="header">

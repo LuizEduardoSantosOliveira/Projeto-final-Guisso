@@ -47,5 +47,4 @@
     ?>
 </footer>
 
->>>>>>> origin/main
 </html>

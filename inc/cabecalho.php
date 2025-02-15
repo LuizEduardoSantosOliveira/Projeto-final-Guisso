@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 
-
 if ($paginaAtual !== 'home.php') {
     echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
 }

@@ -144,7 +144,6 @@
     <h1>Ambientes no sistema</h1>
     <div class="stats">
         <strong>Total de ambientes:</strong> <?php echo count($ambientes); ?>
->>>>>>> origin/main
     </div>
 
     <?php if (count($ambientes) > 0):

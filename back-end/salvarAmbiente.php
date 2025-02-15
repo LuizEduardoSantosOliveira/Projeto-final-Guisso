@@ -16,7 +16,6 @@ $ambiente->nome = $_GET['ambient'];
 $ambiente->descricao = $_GET['description'];
 
 $categoria = R::load('categoria', $_GET['category']);
->>>>>>> origin/main
 
 $ambiente->categoria = $categoria->nome;
 
