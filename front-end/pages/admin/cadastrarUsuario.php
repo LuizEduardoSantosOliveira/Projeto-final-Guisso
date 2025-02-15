@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
-    <title>Cadastro de usuário</title>
+    <title>Login</title>
 </head>
-<body>
-    <header>
-        <?php
-            include "../../../inc/validacao.php";
-            include "../../../inc/cabecalho.php";
-        ?>
-    </header>
 
-    <main>
-        <form action="../../../back-end/salvarUsuarioTeste.php" method="post">
-            <fieldset>
-                <legend>Cadastrar Usuário</legend>
-                <label for="username">Nome do Usuário:</label>
-                <input type="text" name="username" id="username"><br><br>
+<header>
+    <?php
+    include "../../../inc/cabecalho.php";
+    include "../../../inc/validacaoAdmin.php";
+    include "../../../inc/validacao.php";
+    ?>
+</header>
 
-                <label for="email">Email:</label>
-                <input type="text" name="email" id="email"><br><br>
+<main>
+    <form action="../../../back-end/verificacaoUsuario.php" method="get">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name">
 
-                <label for="password">Senha:</label>
-                <input type="password" name="pwd" id="pwd" ocult><br><br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" pattern=".+@(gmail\.com|outlook\.com|hotmail\.com|live\.com|msn\.com)" size="30" required>
 
-                <input type="submit" value="Enviar">
-            </fieldset>
-        </form>
-    </main>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" id="password" required>
 
-    <footer>
-        <?php
-            include "../../../inc/rodape.php";
-        ?>
-    </footer>
-</body>
+        <label for="type">Tipo</label>
+        <select name="type" id="type">
+            <option value="admin">Admin</option>
+            <option value="user">Usuário</option>
+
+
+        </select>
+        
+
+        <input type="submit" value="Enviar">
+    </form>
+</main>
+
+<footer>
+    <?php
+    include "../../../inc/rodape.php"
+    ?>
+</footer>
+
+>>>>>>> origin/main
 </html>

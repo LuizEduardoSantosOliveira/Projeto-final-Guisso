@@ -23,7 +23,7 @@
     <main>
         <?php
 
-        $id_categoria= $_GET['category'];
+        $id_categoria = $_GET['category'];
         $categoria = R::load('categoria', $id_categoria);
 
         if (!$categoria->id) {

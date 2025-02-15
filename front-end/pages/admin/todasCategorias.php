@@ -1,5 +1,5 @@
-
 <html lang="pt-br">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
@@ -121,77 +121,78 @@
     </style>
 </head>
 
-    <header>
-        <?php
-            include "../../../back-end/buscarTodasCategorias.php";
-            include "../../../inc/validacao.php";
-            include "../../../inc/cabecalho.php";
-            
-        
+<header>
+    <?php
+    include "../../../back-end/buscarTodasCategorias.php";
+    include "../../../inc/validacaoAdmin.php";
+    include "../../../inc/cabecalho.php";
+    include "../../../inc/validacao.php";
 
-        ?>
-        <div class="container">
+
+
+    ?>
+    <div class="container">
         <div class="header">
             <div class="user-info">
                 <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
             </div>
             <a href="criarCategoria.php" class="btn btn-new">Nova Categoria</a>
         </div>
-    </header>
-    
+</header>
 
-       <main>
-            <h1>Categoria no sistema</h1>
-             <div class="stats">
-                <strong>Total de categorias:</strong> <?php echo count($categorias); ?>
-            </div>
 
-            <?php if (count($categorias) > 0):
-                ?>
-                <table>
-                     <thead>
-                         <tr>
-                             <th>ID</th>
-                            <th>Nome</th> 
-                            <th>Descrições</th>
-                            <th>Ações</th>
-                         </tr>
-                    </thead>
-                <tbody>
-                    <?php foreach ($categorias as $categoria): ?>
-                        <tr>
-                            <td><?= $categoria->id ?></td>
-                            <td><?= $categoria->nome ?></td>
-                            <td><?= $categoria->descricao ?></td>
-                            <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $categoria->id ?>"
-                                    class="btn btn-edit">Editar</a>
-                                <a href="../../../back-end/excluirCategoria.php?id=<?= $categoria->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <div class="empty-state">
-                <p>Você ainda não possui categorias.</p>
-                <p>Clique em "Nova categoria" para criar sua primeira categoria.</p>
-            </div>
-        <?php endif; ?>
+<main>
+    <h1>Categoria no sistema</h1>
+    <div class="stats">
+        <strong>Total de categorias:</strong> <?php echo count($categorias); ?>
     </div>
 
-       </main> 
+    <?php if (count($categorias) > 0):
+    ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrições</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($categorias as $categoria): ?>
+                    <tr>
+                        <td><?= $categoria->id ?></td>
+                        <td><?= $categoria->nome ?></td>
+                        <td><?= $categoria->descricao ?></td>
+                        <td class="actions">
+                            <a href="editar_reserva.php?id=<?= $categoria->id ?>"
+                                class="btn btn-edit">Editar</a>
+                            <a href="../../../back-end/excluirCategoria.php?id=<?= $categoria->id ?>"
+                                class="btn btn-delete"
+                                onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <div class="empty-state">
+            <p>Você ainda não possui categorias.</p>
+            <p>Clique em "Nova categoria" para criar sua primeira categoria.</p>
+        </div>
+    <?php endif; ?>
+    </div>
 
-       
+</main>
+
+
 <footer>
-<?php
-       include "../../../inc/rodape.php";
+    <?php
+    include "../../../inc/rodape.php";
 
-        ?>
+    ?>
 </footer>
 
 </html>

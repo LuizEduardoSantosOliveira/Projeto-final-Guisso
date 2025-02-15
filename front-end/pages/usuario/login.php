@@ -21,8 +21,10 @@
 
             <main>
                 <form action="../../../back-end/verificacaoLogin.php" method="get">
-                    <label for="name">Nome:</label>
-                    <input type="text" name="name" id="name">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" pattern=".+@(gmail\.com|outlook\.com|hotmail\.com|live\.com|msn\.com)" size="30" required>
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" required>
                     <input type="submit" value="Enviar">
                 </form>
             </main>

@@ -24,6 +24,7 @@
     <header>
         <?php
         include "../../../inc/cabecalho.php";
+        include "../../../inc/validacao.php";
         ?>
     </header>
 </body>
@@ -48,12 +49,10 @@
 
 <footer>
     <?php
-        include '../../../inc/rodape.php';
-        if ($paginaAtual !== 'sobreNos.php') { 
-            echo '<a href="../../../usuario/sobreNos.php">Sobre Nós</a>';
-            
-        
-        }
+    include '../../../inc/rodape.php';
+    if ($paginaAtual !== 'sobreNos.php') {
+        echo '<a href="../../../usuario/sobreNos.php">Sobre Nós</a>';
+    }
     ?>
 </footer>
 

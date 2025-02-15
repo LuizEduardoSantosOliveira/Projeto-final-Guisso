@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -126,7 +124,7 @@
 
 <body>
     <?php
-        include "../../../back-end/buscarReservasUsuario.php"
+    include "../../../back-end/buscarReservasUsuario.php"
 
 
     ?>
@@ -145,10 +143,10 @@
         </div>
 
         <?php if (count($reservas) > 0):
-           
-            
-            
-            ?>
+
+
+
+        ?>
             <table>
                 <thead>
                     <tr>

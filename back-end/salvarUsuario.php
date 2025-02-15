@@ -6,28 +6,28 @@ include  '../inc/validacao.php';
 
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
-    
+
     if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
     }
 }
 
-if (isset($_SESSION['name'])) {
-    date_default_timezone_set('America/Sao_Paulo');
+date_default_timezone_set('America/Sao_Paulo');
 
 
-    $usuario = R::dispense('usuario');
-    $usuario->nome = $_SESSION['name'];
-    //$usuario->email = $email;
-    $usuario->criado_em = date('Y-m-d H:i:s');
+$usuario = R::dispense('usuario');
+$usuario->nome = $_GET["name"];
+$usuario->email = $_GET["email"];
+$usuario->senha = $_GET["password"];
+$usuario->tipo = $_GET["type"];
+$usuario->criado_em = date('Y-m-d H:i:s');
 
 
 
-    $id = R::store($usuario);
-    R::close();
+$id = R::store($usuario);
+R::close();
 
 
-    header('Location: ../front-end/pages/usuario/home.php');
-    return $id;
-    exit;
-}
+header('Location: ../front-end/pages/admin/todosUsuarios.php');
+return $id;
+exit;

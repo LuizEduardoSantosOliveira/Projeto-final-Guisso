@@ -5,7 +5,7 @@ include '../inc/validacao.php';
 
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
-    
+
     if (!R::testConnection()) {
         die('Falha na conexão com o banco de dados');
     }
@@ -23,4 +23,3 @@ R::close();
 
 header('Location: ../front-end/pages/admin/todasCategorias.php');
 exit();
-?>
