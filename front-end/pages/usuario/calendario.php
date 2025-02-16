@@ -28,6 +28,7 @@
 
     <main>
         <?php
+        $ambienteId = $_GET['ambiente'];
         $mesAtual = isset($_GET['month']) ? intval($_GET['month']) : date('m');
         $anoAtual = isset($_GET['year']) ? intval($_GET['year']) : date('Y');
 
@@ -76,7 +77,7 @@
                 }
 
                 $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
-                $linkReserva = "categoria.php?date=" . $dataCompleta;
+                $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta;
                 $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
             }
 
@@ -97,7 +98,7 @@
         <form method="get" action="">
             <label for="month_year">Mês:</label>
             <input type="month" name="month_year" value="<?php echo $anoAtual . '-' . sprintf('%02d', $mesAtual); ?>" onchange="this.form.submit()">
-
+            <input type="hidden" name="ambiente" value= <?php echo $ambienteId?>>
         </form>
 
         <div>
@@ -105,6 +106,19 @@
             echo gerarCalendario($mesAtual, $anoAtual);
             ?>
         </div>
+        <?php if(isset($_GET['date'])){ ?>
+            <form method="get" action="salvarReserva">
+                <br><h2>Horários para reserva</h2><br>
+                <input type="hidden" name="date" value=<?php echo $_GET['date'] ?>>
+                <input type="hidden" name="ambient" value=<?php echo $_GET['ambiente'] ?>>
+                <?php
+                    for ($i=7; $i<=21 ; $i++) { 
+                        echo "<input type='checkbox' name='hora' id='hora' value='". $i .":00:00'>" . $i . ":00</input>";
+                    }
+                ?>
+                <br><input type="submit" value="Enviar">
+            </form>
+        <?php } ?>
     </main>
 
 

@@ -19,7 +19,7 @@ if (isset($_SESSION['name'])) {
     //$reserva->hora_inicio = $hora_inicio;
     //$reserva->hora_fim = $hora_fim;
     $reserva->nome = $_SESSION['name'];
-    $reserva->categoria  = $_GET["category"];
+    //$reserva->categoria  = $_GET["category"];
 
     $ambiente_id = $_GET['ambient'];
     $ambiente = R::load('ambiente', $ambiente_id);
