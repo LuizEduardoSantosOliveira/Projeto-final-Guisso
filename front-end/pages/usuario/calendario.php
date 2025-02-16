@@ -18,6 +18,7 @@
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
         include "../../../back-end/buscartodasreservas.php";
+        include "../../../back-end/verificacaoDataReservada.php";
 
 
         if (isset($_GET['erro'])) {
@@ -113,7 +114,14 @@
                 <input type="hidden" name="ambiente" value=<?php echo $_GET['ambiente'] ?>>
                 <?php
                     for ($i=7; $i<=21 ; $i++) { 
-                        echo "<input type='checkbox' name='hora". $i ."' id='hora". $i ."' value='". $i .":00:00'>" . $i . ":00</input>";
+                        $hora = sprintf("%d:00:00", $i);
+                        $horaDisponivel = verificarHorario($_GET['date'], $hora, $_GET['ambiente']);
+                        if($horaDisponivel == true){
+                            echo "<input type='checkbox' name='hora". $i ."' id='hora". $i ."' value='". $hora ."' disabled> <span style='color: red;'>". $i .":00</span> </input>";
+                        }else{
+                            echo "<input type='checkbox' name='hora". $i ."' id='hora". $i ."' value='". $hora ."'>" . $i . ":00</input>";
+                        }
+                        
                     }
                 ?>
                 <br><input type="submit" value="Enviar">
