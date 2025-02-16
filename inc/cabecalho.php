@@ -5,8 +5,17 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 
-if ($paginaAtual !== 'home.php') {
-    echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
+if($_SESSION['type'] === "admin"){
+    if ($paginaAtual !== 'adminPainel.php') {
+        echo '<a href="../../../front-end/pages/admin/AdminPainel.php">Home</a>';
+     
+    }
+    
+}else{
+    if ($paginaAtual !== 'home.php') {
+        echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
+       
+    }
 }
 
 
@@ -18,7 +27,8 @@ if (isset($_SESSION['email'])) {
         
      R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
      $usuario = R::findOne('usuario', 'email = ? ', [$_SESSION['email']]);
-     echo '<h1>Login: ' . strtoupper($usuario-> nome) . '</h1>';
+     $_SESSION['name'] = $usuario-> nome;
+     echo '<h1>Login: ' . strtoupper($_SESSION['name']) . '</h1>';
 
      echo '<a href="../../../back-end/logout.php">Sair</a>';
 

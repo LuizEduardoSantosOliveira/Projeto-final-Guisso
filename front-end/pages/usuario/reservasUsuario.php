@@ -124,7 +124,7 @@
 
 <body>
     <?php
-    include "../../../back-end/buscarReservasUsuario.php"
+    include "../../../back-end/buscarReservasUsuario.php";
 
 
     ?>
@@ -152,6 +152,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Data da Reserva</th>
+                        <th>Horário Reservado</th>
                         <th>Status</th>
                         <th>Categoria</th>
                         <th>ambiente</th>
@@ -163,13 +164,14 @@
                         <tr>
                             <td><?= $reserva->id ?></td>
                             <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
+                            <td><?= $reserva->horas ?></td>
                             <td>
                                 <span class="status status-ativa">
                                     Ativa
                                 </span>
                             </td>
-                            <td><?= $reserva->categoria ?></td>
-                            <td><?= $reserva->ambiente ?></td>
+                            <td><?= $reserva->ambiente -> categoria ?></td>
+                            <td><?= $reserva->ambiente-> nome ?></td>
                             <td class="actions">
                                 <a href="editar_reserva.php?id=<?= $reserva->id ?>"
                                     class="btn btn-edit">Editar</a>

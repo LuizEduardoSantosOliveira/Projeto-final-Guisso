@@ -17,6 +17,7 @@ $usuarioValido = R::findOne('usuario', 'email = ? AND senha = ? AND tipo = ?', [
 if (!$usuarioValido) {
     header("Location: ../front-end/pages/usuario/home.php");
     $_SESSION['email'] = $_GET['email'];
+    $_SESSION['type'] = "usuario";
     exit();
 } else {
     $_SESSION['type'] = $usuarioValido -> tipo;
