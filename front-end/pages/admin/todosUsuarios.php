@@ -128,11 +128,11 @@
 
     <header>
         <?php
+
         include "../../../back-end/buscarTodosUsuarios.php";
         include "../../../inc/validacaoAdmin.php";
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
-
 
         ?>
         <div class="container">

@@ -121,12 +121,12 @@
     </style>
 </head>
 
-<header>
-    <?php
-    include "../../../back-end/buscarTodasReservas.php";
-    include "../../../inc/validacao.php";
-    include "../../../inc/cabecalho.php";
-
+    <header>
+        <?php
+            include "../../../back-end/buscarTodasReservas.php";
+            include "../../../inc/validacao.php";
+            include "../../../inc/cabecalho.php";
+        
 
     ?>
     <div class="container">

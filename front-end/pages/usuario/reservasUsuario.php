@@ -131,9 +131,9 @@
     <div class="container">
         <div class="header">
             <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
+                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?>
             </div>
-            <a href="calendario.php" class="btn btn-new">Nova Reserva</a>
+            <a href="ambienteTeste.php" class="btn btn-new">Nova Reserva</a>
         </div>
 
         <h1>Minhas Reservas</h1>
