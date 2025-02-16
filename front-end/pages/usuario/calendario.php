@@ -14,6 +14,7 @@
 <body>
     <header>
         <?php
+        session_start();
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
         include "../../../back-end/buscartodasreservas.php";
