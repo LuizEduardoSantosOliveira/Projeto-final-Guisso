@@ -12,35 +12,31 @@ if (!R::testConnection()) {
     }
 }
 
+if (isset($_SESSION['email'])) {
 
-if (isset($_SESSION['name'])) {
+    for ($i=7; $i<=21; $i++) { 
+        $hora = sprintf('hora%d', $i);
+        if(isset($_GET[$hora])){
+            $horas[] = $_GET[$hora]; 
+        }
+    }
+
+    foreach($horas as $horac){
+        echo $horac;
+    }
+
     $reserva = R::dispense('reserva');
     $reserva->data_reserva = $_GET['date'];
-    //$reserva->hora_inicio = $hora_inicio;
-    //$reserva->hora_fim = $hora_fim;
-    $reserva->nome = $_SESSION['name'];
-    //$reserva->categoria  = $_GET["category"];
-
-    $ambiente_id = $_GET['ambient'];
-    $ambiente = R::load('ambiente', $ambiente_id);
-    $reserva->ambiente = $ambiente->nome;
-
-
-
-
-
-    $usuario = R::findOne('usuario', 'nome = ?', [$_SESSION['name']]);
+    $reserva->horas = json_encode($horas);
+    $usuario = R::findOne('usuario', 'email=?', [$_SESSION['email']]);
     if (!$usuario) {
         throw new Exception("Usuário não encontrado");
     }
-
-
-    $reserva->usuario = $usuario->nome;
+    $reserva->usuario_id = $usuario->id;
+    $reserva->ambiente_id = $_GET['ambiente'];
     $id_reserva = R::store($reserva);
     R::close();
 
-
-
-    header('Location: ../front-end/pages/usuario/reservasUsuario.php?');
+    header('Location: ../front-end/pages/usuario/reservasUsuario.php');
     return $id_reserva;
 }

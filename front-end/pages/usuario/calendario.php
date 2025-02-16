@@ -16,6 +16,7 @@
         <?php
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
+        include "../../../back-end/buscartodasreservas.php";
 
 
         if (isset($_GET['erro'])) {
@@ -107,13 +108,13 @@
             ?>
         </div>
         <?php if(isset($_GET['date'])){ ?>
-            <form method="get" action="salvarReserva">
+            <form method="get" action="../../../back-end/salvarReserva.php">
                 <br><h2>Horários para reserva</h2><br>
                 <input type="hidden" name="date" value=<?php echo $_GET['date'] ?>>
-                <input type="hidden" name="ambient" value=<?php echo $_GET['ambiente'] ?>>
+                <input type="hidden" name="ambiente" value=<?php echo $_GET['ambiente'] ?>>
                 <?php
                     for ($i=7; $i<=21 ; $i++) { 
-                        echo "<input type='checkbox' name='hora' id='hora' value='". $i .":00:00'>" . $i . ":00</input>";
+                        echo "<input type='checkbox' name='hora". $i ."' id='hora". $i ."' value='". $i .":00:00'>" . $i . ":00</input>";
                     }
                 ?>
                 <br><input type="submit" value="Enviar">
