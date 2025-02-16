@@ -27,7 +27,8 @@ if (isset($_SESSION['email'])) {
         
      R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
      $usuario = R::findOne('usuario', 'email = ? ', [$_SESSION['email']]);
-     echo '<h1>Login: ' . strtoupper($usuario-> nome) . '</h1>';
+     $_SESSION['name'] = $usuario-> nome;
+     echo '<h1>Login: ' . strtoupper($_SESSION['name']) . '</h1>';
 
      echo '<a href="../../../back-end/logout.php">Sair</a>';
 

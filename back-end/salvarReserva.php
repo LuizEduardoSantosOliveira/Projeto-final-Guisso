@@ -4,6 +4,9 @@ require_once './class/rb.php';
 include  '../inc/validacaodata.php';
 include  '../inc/validacao.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 
@@ -32,11 +35,14 @@ if (isset($_SESSION['email'])) {
     if (!$usuario) {
         throw new Exception("Usuário não encontrado");
     }
-    $reserva->usuario_id = $usuario->id;
+    
+    $reserva->usuario_id = $usuario -> id;
+    $reserva -> reservante = $_SESSION['name'];
     $reserva->ambiente_id = $_GET['ambiente'];
     $id_reserva = R::store($reserva);
     R::close();
 
     header('Location: ../front-end/pages/usuario/reservasUsuario.php');
     return $id_reserva;
+
 }
