@@ -152,7 +152,7 @@
                 <tr>
                     <th>Reservante</th>
                     <th>Data da Reserva</th>
-                    <th>Horário Reservado</th>
+                    <th>Horários Reservados</th>
                     <th>Status</th>
                     <th>Categoria</th>
                     <th>ambiente</th>
@@ -165,7 +165,18 @@
                     <tr>
                         <td><?= $reserva->reservante ?></td>
                         <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
-                        <td><?= $reserva->horas ?></td>
+
+                        <?php
+                            $horas = json_decode($reserva->horas);
+                            $stringHoras = "";
+                            foreach ($horas as $hora) {
+                                $timeHora = DateTime::createFromFormat('H:i:s', $hora);
+                                $stringHora = $timeHora->format('H:i');
+                                $stringHoras .= sprintf("%s, ", $stringHora);
+                            }
+                        ?>
+
+                        <td><?= $stringHoras ?></td>
                         <td>
                             <span class="status status-ativa">
                                 Ativa
