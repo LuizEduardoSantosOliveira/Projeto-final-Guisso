@@ -6,9 +6,12 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
 if (!R::testConnection()) {
-    die('Falha na conexão com o banco de dados');
+    R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
+
+    if (!R::testConnection()) {
+        die('Falha na conexão com o banco de dados');
+    }
 }
 
 $usuario = R::findOne('usuario', 'email = ?', [$_SESSION['email']]);

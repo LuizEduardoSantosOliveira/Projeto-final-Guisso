@@ -125,8 +125,9 @@
 <body>
     <?php
     include "../../../back-end/buscarReservasUsuario.php";
-
-
+    
+    // Limitar para as últimas 5 reservas
+    $ultimasReservas = array_slice($reservas, 0, 5);
     ?>
     <div class="container">
         <div class="header">
@@ -142,11 +143,7 @@
             <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
         </div>
 
-        <?php if (count($reservas) > 0):
-
-
-
-        ?>
+        <?php if (count($ultimasReservas) > 0): ?>
             <table>
                 <thead>
                     <tr>
@@ -155,12 +152,12 @@
                         <th>Horário Reservado</th>
                         <th>Status</th>
                         <th>Categoria</th>
-                        <th>ambiente</th>
+                        <th>Ambiente</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($reservas as $reserva): ?>
+                    <?php foreach ($ultimasReservas as $reserva): ?>
                         <tr>
                             <td><?= $reserva->id ?></td>
                             <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
@@ -170,15 +167,15 @@
                                     Ativa
                                 </span>
                             </td>
-                            <td><?= $reserva->ambiente -> categoria ?></td>
-                            <td><?= $reserva->ambiente-> nome ?></td>
+                            <td><?= $reserva->ambiente->categoria ?></td>
+                            <td><?= $reserva->ambiente->nome ?></td>
                             <td class="actions">
                                 <a href="editar_reserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-edit">Editar</a>
+                                   class="btn btn-edit">Editar</a>
                                 <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    Excluir
+                                   class="btn btn-delete"
+                                   onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                   Excluir
                                 </a>
                             </td>
                         </tr>

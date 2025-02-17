@@ -1,8 +1,6 @@
 <?php
 
 require_once '../back-end/class/rb.php';
-include  '../inc/validacao.php';
-
 
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
@@ -30,7 +28,7 @@ if (!$usuarioValido) {
     $id = R::store($usuario);
     R::close();
 
-
+    echo "Usuário root criado com sucesso";     
     header('Location: ../front-end/pages/admin/adminPainel.php');
     return $id;
     exit;

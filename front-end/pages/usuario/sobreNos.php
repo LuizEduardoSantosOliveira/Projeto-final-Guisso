@@ -54,9 +54,6 @@
     <footer>
         <?php
         include '../../../inc/rodape.php';
-        if ($paginaAtual !== 'sobreNos.php') {
-            echo '<a href="../../../usuario/sobreNos.php">Sobre Nós</a>';
-        }
         ?>
     </footer>
 </body>
