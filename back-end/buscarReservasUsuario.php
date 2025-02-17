@@ -1,5 +1,7 @@
 <?php
 require_once '../../../back-end/class/rb.php';
+
+
 include '../../../inc/validacao.php';
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -19,3 +21,5 @@ $usuario = R::findOne('usuario', 'email = ?', [$_SESSION['email']]);
 $reservas = R::find('reserva', 'reservante = ?', [$_SESSION['name']]);
 
 R::close();
+
+echo '<a href = "../../../back-end/class/rb.php>teste</a>';

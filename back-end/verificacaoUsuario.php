@@ -24,3 +24,4 @@ if (!$usuario) {
     header("Location: ../front-end/pages/admin/cadastrarUsuario.php?erro=Usuário ja existente");
     exit();
 }
+
