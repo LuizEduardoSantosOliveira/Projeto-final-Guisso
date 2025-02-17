@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../back-end/class/rb.php';
 include  '../inc/validacao.php';
 
@@ -23,10 +23,8 @@ $usuario->tipo = $_GET["type"];
 $usuario->criado_em = date('Y-m-d H:i:s');
 
 
-
 $id = R::store($usuario);
 R::close();
-
 
 header('Location: ../front-end/pages/admin/todosUsuarios.php');
 return $id;

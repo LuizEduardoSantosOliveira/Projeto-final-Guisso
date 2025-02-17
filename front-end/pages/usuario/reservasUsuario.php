@@ -134,7 +134,7 @@
             <div class="user-info">
                 <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?>
             </div>
-            <a href="ambienteTeste.php" class="btn btn-new">Nova Reserva</a>
+            <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
         </div>
 
         <h1>Minhas Reservas</h1>
@@ -149,7 +149,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Data da Reserva</th>
-                        <th>Horário Reservado</th>
+                        <th>Horários Reservados</th>
                         <th>Status</th>
                         <th>Categoria</th>
                         <th>Ambiente</th>
@@ -161,7 +161,18 @@
                         <tr>
                             <td><?= $reserva->id ?></td>
                             <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
-                            <td><?= $reserva->horas ?></td>
+
+                            <?php
+                                $horas = json_decode($reserva->horas);
+                                $stringHoras = "";
+                                foreach ($horas as $hora) {
+                                    $timeHora = DateTime::createFromFormat('H:i:s', $hora);
+                                    $stringHora = $timeHora->format('H:i');
+                                    $stringHoras .= sprintf("%s, ", $stringHora);
+                                }
+                            ?>
+
+                            <td><?= $stringHoras ?></td>
                             <td>
                                 <span class="status status-ativa">
                                     Ativa

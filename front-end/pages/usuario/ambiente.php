@@ -1,77 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/style.css">
     <title>Ambiente</title>
 </head>
-
 <body>
     <header>
         <?php
-        include "../../../inc/cabecalho.php";
-        include "../../../inc/validacao.php";
-        include "../../../back-end/buscarTodosAmbientes.php";
-        include "../../../back-end/buscarTodasCategorias.php";
-
+            include "../../../inc/cabecalho.php";
+            include "../../../inc/validacao.php";
+            include "../../../back-end/buscarTodasCategorias.php";
+            include "../../../back-end/buscarTodosAmbientes.php";
         ?>
     </header>
 
     <main>
         <?php
+            foreach($categorias as $categoria){
+                echo '<h2>'. $categoria->nome . '</h2>';
+                foreach($ambientes as $ambiente){
+                    if($ambiente->id_categoria == $categoria->id){
+                        $linkcalendario = "calendario.php?ambiente=" . $ambiente->id;
 
-        $id_categoria = $_GET['category'];
-        $categoria = R::load('categoria', $id_categoria);
-
-        if (!$categoria->id) {
-            die('Erro: Categoria não encontrada no banco.');
-        };
-        $ambientes = R::find('ambiente', 'categoria_id = ?', [$id_categoria]);
-        ?>
-
-
-
-
-        <form action="../../../back-end/verificacaoReserva.php" method="get">
-            <fieldset>
-                <legend>Ambiente</legend>
-
-                <label for="date">Data: </label>
-                <input id="date" type="text" name="date" value="<?php echo $_GET['date']; ?>" readonly><br><br>
-
-                <label for="category">Categoria: </label>
-                <input id="category" type="text" name="category" value="<?php echo $categoria->nome ?>" readonly><br><br>
-
-                <label for="ambient">Ambiente: </label>
-                <select name="ambient" id="ambient">
-                    <?php
-                    foreach ($ambientes as $ambiente) {
-                        $categoria = R::load('categoria', $ambiente->categoria);
-                        echo '<option value="' . $ambiente->id . '">' . htmlspecialchars($ambiente->nome) .  '</option>';
+                        echo '<div><h4><a href=' . $linkcalendario . '>' . $ambiente->nome . '</a></h4>';
+                        echo '<p>' . $ambiente->descricao . '</p></div>';
                     }
-                    ?>
-                </select>
-
-                <input type="submit" value="Enviar">
-            </fieldset>
-        </form>
-
-        <?php
+                }
+            }
         ?>
-
-
-
     </main>
 
     <footer>
         <?php
-        include "../../../inc/rodape.php";
-
+            include "../../../inc/rodape.php";
         ?>
     </footer>
 </body>
-
 </html>
