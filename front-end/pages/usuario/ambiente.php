@@ -21,8 +21,11 @@
                 echo '<h2>'. $categoria->nome . '</h2>';
                 foreach($ambientes as $ambiente){
                     if($ambiente->id_categoria == $categoria->id){
-                        $linkcalendario = "calendario.php?ambiente=" . $ambiente->id;
-
+                        if(isset($_GET['id'])){
+                            $linkcalendario = "calendario.php?ambiente=" . $ambiente->id . "&id=" . $_GET['id'];
+                        }else{
+                            $linkcalendario = "calendario.php?ambiente=" . $ambiente->id;
+                        }
                         echo '<div><h4><a href=' . $linkcalendario . '>' . $ambiente->nome . '</a></h4>';
                         echo '<p>' . $ambiente->descricao . '</p></div>';
                     }

@@ -70,7 +70,7 @@
                             <td><?= $reserva->ambiente->categoria ?></td>
                             <td><?= $reserva->ambiente->nome ?></td>
                             <td class="actions">
-                            <a href="editar_reserva.php?id=<?= $reserva->id ?>"
+                            <a href="ambiente.php?id=<?= $reserva->id ?>"
                                 class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="../../../back-end/excluirCategoria.php?id=<?= $reserva->id ?>"
                                 class="btn btn-delete"

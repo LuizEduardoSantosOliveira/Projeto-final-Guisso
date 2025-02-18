@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/67492479d6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/style.css">
-    <title>Minhas Reservas</title>
+    <title>Reservas no Sistema</title>
     
 </head>
 
@@ -45,7 +45,7 @@
                     <th>Status</th>
                     <th>Categoria</th>
                     <th>ambiente</th>
-                    <th>Ações</th>
+                    <!-- <th>Ações</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -73,15 +73,15 @@
                         </td>
                         <td><?= $reserva->ambiente->categoria ?></td>
                         <td><?= $reserva->ambiente -> nome ?></td>
-                        <td class="actions">
-                        <a href="editar_reserva.php?id=<?= $reserva->id ?>"
+                        <!--<td class="actions">
+                            <a href="ambiente.php?id=<?= $reserva->id ?>"
                                 class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="../../../back-end/excluirCategoria.php?id=<?= $reserva->id ?>"
                                 class="btn btn-delete"
                                 onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
-                        </td>
+                        </td>-->
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -78,7 +78,11 @@
                 }
 
                 $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
-                $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta;
+                if(isset($_GET['id'])){
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&id=" . $_GET['id'];
+                }else{
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta;
+                }
                 $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
             }
 
@@ -100,6 +104,9 @@
             <label for="month_year">Mês:</label>
             <input type="month" name="month_year" value="<?php echo $anoAtual . '-' . sprintf('%02d', $mesAtual); ?>" onchange="this.form.submit()">
             <input type="hidden" name="ambiente" value= <?php echo $ambienteId?>>
+            <?php if(isset($_GET['id'])) { ?>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+            <?php } ?>
         </form>
 
         <div>
@@ -108,10 +115,13 @@
             ?>
         </div>
         <?php if(isset($_GET['date'])){ ?>
-            <form method="get" action="../../../back-end/salvarReserva.php">
+            <form method="get" action="<?php if(isset($_GET['id'])){echo "../../../back-end/editarReserva.php";}else{echo "../../../back-end/salvarReserva.php";} ?>">
                 <br><h2>Horários para reserva</h2><br>
                 <input type="hidden" name="date" value=<?php echo $_GET['date'] ?>>
                 <input type="hidden" name="ambiente" value=<?php echo $_GET['ambiente'] ?>>
+                <?php if(isset($_GET['id'])) { ?>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+                <?php } ?>
                 <?php
                     for ($i=7; $i<=21 ; $i++) { 
                         $hora = sprintf("%d:00:00", $i);
