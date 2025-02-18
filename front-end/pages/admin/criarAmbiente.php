@@ -26,13 +26,6 @@
         <form action="../../../back-end/verificacaoAmbiente.php" method="get">
             <fieldset>
                 <legend>Criar Ambiente</legend>
-
-                <label for="ambient">Nome do Ambiente:</label>
-                <input type="text" name="ambient" id="ambient"><br><br>
-
-                <label for="description">Descrição do Ambiente:</label><br>
-                <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
-
                 <label for="category">Categoria</label>
                 <select name="category" id="category">
                     <?php
@@ -42,6 +35,14 @@
                     }
                     ?>
                 </select>
+
+                <label for="ambient">Nome do Ambiente:</label>
+                <input type="text" name="ambient" id="ambient"><br><br>
+
+                <label for="description">Descrição do Ambiente:</label><br>
+                <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
+
+               
 
                 <input type="submit" value="Enviar">
             </fieldset>

@@ -57,7 +57,7 @@
                         <td class="actions">
                             <a href="editar_reserva.php?id=<?= $ambientes->id ?>"
                                 class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="../../../back-end/excluirCategoria.php?id=<?= $ambientes->id ?>"
+                           <a href="../../../back-end/excluirAmbiente.php?id=<?= $ambientes->id ?>"
                                 class="btn btn-delete"
                                 onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                 <i class="fa-solid fa-trash"></i>

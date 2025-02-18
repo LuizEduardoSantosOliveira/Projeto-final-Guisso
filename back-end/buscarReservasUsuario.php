@@ -22,4 +22,3 @@ $reservas = R::find('reserva', 'reservante = ?', [$_SESSION['name']]);
 
 R::close();
 
-echo '<a href = "../../../back-end/class/rb.php>teste</a>';

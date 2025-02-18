@@ -35,5 +35,8 @@
         $reserva->usuario_id = $usuario -> id;
 
         R::store($reserva);
+        header('Location: ../front-end/pages/usuario/reservasUsuario.php');
+    }else{
+        echo "id não informado";
     }
 ?>

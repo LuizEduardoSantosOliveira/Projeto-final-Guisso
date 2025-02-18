@@ -35,9 +35,6 @@
         ?>
         <div class="container">
         <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?>
-            </div>
             <a href="ambienteTeste.php" class="btn btn-new">Nova Reserva</a>
         </div>
 
@@ -65,7 +62,16 @@
                         <tr>
                             <td><?= $reserva->id ?></td>
                             <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
-                            <td><?= $reserva->horas ?></td>
+                            <?php
+                                $horas = json_decode($reserva->horas);
+                                $stringHoras = "";
+                                foreach ($horas as $hora) {
+                                    $timeHora = DateTime::createFromFormat('H:i:s', $hora);
+                                    $stringHora = $timeHora->format('H:i');
+                                    $stringHoras .= sprintf("%s, ", $stringHora);
+                                }
+                                ?>
+                                 <td><?= $stringHoras ?></td>
                             <td>
                                 <span class="status status-ativa">
                                     Ativa

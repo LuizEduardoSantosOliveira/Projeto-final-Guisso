@@ -17,22 +17,20 @@
             include "../../../inc/cabecalho.php";
         
 
-    ?>
-    <div class="container">
-        <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
-            </div>
-            <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
-        </div>
+        ?>
 </header>
 
 
 <main>
     <h1>Reservas no sistema</h1>
-    <div class="stats">
-        <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
-    </div>
+    <div class="container">
+            <div class="header">
+                <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
+            </div>
+
+            <div class="stats">
+                <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
+            </div>
 
     <?php if (count($reservas) > 0):
     ?>
