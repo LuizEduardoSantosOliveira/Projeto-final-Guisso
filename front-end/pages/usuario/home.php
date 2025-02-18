@@ -16,7 +16,7 @@
         include "../../../inc/validacao.php";
         ?>
         <nav>
-            <li><a href="calendario.php">Fazer reserva</a></li>
+            <li><a href="ambiente.php">Fazer reserva</a></li>
             <li><a href="reservasUsuario.php">Minhas reservas</a></li>
             <li><a href="sobreNos.php">Sobre Nós</a></li>
             <li><a href="todasReservas.php">Reservas no sistema</a></li>
