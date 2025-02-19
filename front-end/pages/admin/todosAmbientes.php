@@ -19,21 +19,19 @@
 
 
     ?>
-    <div class="container">
-        <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
-            </div>
-            <a href="criarAmbiente.php" class="btn btn-new">Novo Ambiente</a>
-        </div>
+  
+       
 </header>
 
 
 <main>
+   
+    <div class="container">
     <h1>Ambientes no sistema</h1>
-    <div class="stats">
-        <strong>Total de ambientes:</strong> <?php echo count($ambientes); ?>
-    </div>
+    <div class="header-table">
+               <?php echo '<h2>' . "Total de ambientes no sistema: " . count($ambientes) . '<a href="../usuario/criarAmbiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>' ; ?>
+                
+            </div>
 
     <?php if (count($ambientes) > 0):
     ?>

@@ -87,7 +87,7 @@
                 $ultimasReservas = array_slice(array_reverse($reservas), 0, 5);
             ?>
 
-                <table class="table-reserve-admin">
+                <table>
                     <thead>
                         <tr>
                             <th>Reservante</th>

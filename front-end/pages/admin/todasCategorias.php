@@ -20,22 +20,17 @@
 
 
     ?>
-    <div class="container">
-        <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
-            </div>
-            <a href="criarCategoria.php" class="btn btn-new">Nova Categoria</a>
-        </div>
+   
 </header>
 
 
 <main>
-    <h1>Categoria no sistema</h1>
-    <div class="stats">
-        <strong>Total de categorias:</strong> <?php echo count($categorias); ?>
-    </div>
-
+    <div class="container">
+    <h1>Categorias no sistema</h1>
+            <div class="header-table">
+               <?php echo '<h2>' . "Total de categorias no sistema: " . count($categorias) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>' ; ?>
+                
+            </div>
     <?php if (count($categorias) > 0):
     ?>
         <table>
