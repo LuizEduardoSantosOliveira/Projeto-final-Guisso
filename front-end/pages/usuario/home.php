@@ -16,10 +16,13 @@
         include "../../../inc/validacao.php";
         ?>
         <nav>
-            <li><a href="ambiente.php">Fazer reserva</a></li>
-            <li><a href="reservasUsuario.php">Minhas reservas</a></li>
-            <li><a href="sobreNos.php">Sobre Nós</a></li>
-            <li><a href="todasReservas.php">Reservas no sistema</a></li>
+            <ul>
+                <li><a href="ambiente.php">Fazer reserva</a></li>
+                <li><a href="reservasUsuario.php">Minhas reservas</a></li>
+                <li><a href="sobreNos.php">Sobre Nós</a></li>
+                <li><a href="todasReservas.php">Reservas no sistema</a></li>
+            </ul>
+
         </nav>
     </header>
 
@@ -33,36 +36,36 @@
             // Usando array_slice para pegar as 5 últimas reservas
             $ultimasReservas = array_slice($reservas, 0, 5);
         ?>
-        <div class="container">
-        <div class="header">
-            <a href="ambienteTeste.php" class="btn btn-new">Nova Reserva</a>
-        </div>
+            <div class="container">
+                <div class="header">
+                    <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
+                </div>
 
-        <h1>Minhas Reservas</h1>
+                <h1>Minhas Reservas</h1>
 
-        <div class="stats">
-            <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
-        </div>
+                <div class="stats">
+                    <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
+                </div>
 
-    
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Data da Reserva</th>
-                        <th>Horário Reservado</th>
-                        <th>Status</th>
-                        <th>Categoria</th>
-                        <th>ambiente</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reservas as $reserva): ?>
+
+                <table>
+                    <thead>
                         <tr>
-                            <td><?= $reserva->id ?></td>
-                            <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
-                            <?php
+                            <th>ID</th>
+                            <th>Data da Reserva</th>
+                            <th>Horário Reservado</th>
+                            <th>Status</th>
+                            <th>Categoria</th>
+                            <th>ambiente</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($reservas as $reserva): ?>
+                            <tr>
+                                <td><?= $reserva->id ?></td>
+                                <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
+                                <?php
                                 $horas = json_decode($reserva->horas);
                                 $stringHoras = "";
                                 foreach ($horas as $hora) {
@@ -71,30 +74,30 @@
                                     $stringHoras .= sprintf("%s, ", $stringHora);
                                 }
                                 ?>
-                                 <td><?= $stringHoras ?></td>
-                            <td>
-                                <span class="status status-ativa">
-                                    Ativa
-                                </span>
-                            </td>
-                            <td><?= $reserva->ambiente -> categoria ?></td>
-                            <td><?= $reserva->ambiente-> nome ?></td>
-                            <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-edit">Editar</a>
-                                <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-       
-    </div>
-    <?php
+                                <td><?= $stringHoras ?></td>
+                                <td>
+                                    <span class="status status-ativa">
+                                        Ativa
+                                    </span>
+                                </td>
+                                <td><?= $reserva->ambiente->categoria ?></td>
+                                <td><?= $reserva->ambiente->nome ?></td>
+                                <td class="actions">
+                                    <a href="editar_reserva.php?id=<?= $reserva->id ?>"
+                                        class="btn btn-edit">Editar</a>
+                                    <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
+                                        class="btn btn-delete"
+                                        onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+            </div>
+        <?php
         } else {
             // Caso não tenha reservas
             echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Nova Reserva' para criar sua primeira reserva.</p></div>";
