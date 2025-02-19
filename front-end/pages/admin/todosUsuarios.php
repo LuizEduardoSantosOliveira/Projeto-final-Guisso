@@ -24,54 +24,54 @@
         include "../../../inc/validacao.php";
 
         ?>
-        
+
     </header>
 
 
     <main>
-    <div class="container">
-        <h1>Usuários no Sistema</h1>
-        <div class="header-table">
-               <?php echo '<h2>' . "Total de usuários no sistema: " . count($usuario) . '<a href="../usuario/cadastrarUsuario.php" class="btn btn-new">Nova Reserva</a>' . '</h2>' ; ?>
-                
+        <div class="container">
+            <h1>Usuários no Sistema</h1>
+            <div class="header-table">
+                <?php echo '<h2>' . "Total de usuários no sistema: " . count($usuario) . '<a href="../usuario/cadastrarUsuario.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+
             </div>
 
-        <?php if (count($usuarios) > 0):
-        ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Criado em</th>
-                        <th>Email</th>
-                        <th>Senha</th>
-                        <th>Tipo</th>
-                        <th>Ações</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($usuarios as $usuario): ?>
+            <?php if (count($usuarios) > 0):
+            ?>
+                <table>
+                    <thead>
                         <tr>
-                            <td><?= $usuario->nome ?></td>
-                            <td><?= date('d/m/Y', strtotime($usuario->criado_em)) ?></td>
-                            <td><?= $usuario->email ?></td>
-                            <td><?= $usuario->senha ?></td>
-                            <td><?= $usuario->tipo ?></td>
-                            <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $usuario->id ?>"
-                                    class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+                            <th>Nome</th>
+                            <th>Criado em</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Tipo</th>
+                            <th>Ações</th>
+
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <tr>
+                                <td><?= $usuario->nome ?></td>
+                                <td><?= date('d/m/Y', strtotime($usuario->criado_em)) ?></td>
+                                <td><?= $usuario->email ?></td>
+                                <td><?= $usuario->senha ?></td>
+                                <td><?= $usuario->tipo ?></td>
+                                <td class="actions">
+                                    <a href="editar_reserva.php?id=<?= $usuario->id ?>"
+                                        class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
+                                        class="btn btn-delete"
+                                        onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
 
     </main>
