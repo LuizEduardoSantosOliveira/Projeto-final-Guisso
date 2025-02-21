@@ -79,9 +79,9 @@
 
                 $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
                 if(isset($_GET['id'])){
-                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&id=" . $_GET['id'];
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&id=" . $_GET['id'] . "&month_year=" . $_GET['month_year'];
                 }else{
-                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta;
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&month_year=" . $_GET['month_year'];
                 }
                 $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
             }
