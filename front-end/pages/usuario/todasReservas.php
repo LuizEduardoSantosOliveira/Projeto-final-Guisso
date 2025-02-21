@@ -24,7 +24,7 @@
 <main>
     <h1>Reservas no sistema</h1>
     <div class="container">
-        <div class="header">
+        <div class="header"> 
             <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
         </div>
 
