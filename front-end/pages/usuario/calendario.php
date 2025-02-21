@@ -89,7 +89,7 @@
                 $data = DateTime::createFromFormat('Y-m-d', $dataString);
                 $diaAtual = new DateTime('today'); 
                 if($data < $diaAtual){
-                    $calendario .= "<td>$dia</td>"; 
+                    $calendario .= "<td><span style='color: red;'>". $dia . "</span> </input></td>"; 
                 }else{
                     $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
                 }
