@@ -19,60 +19,58 @@
 
 
     ?>
-    <div class="container">
-        <div class="header">
-            <div class="user-info">
-                <strong>Usuário:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
-            </div>
-            <a href="criarAmbiente.php" class="btn btn-new">Novo Ambiente</a>
-        </div>
+
+
 </header>
 
 
 <main>
-    <h1>Ambientes no sistema</h1>
-    <div class="stats">
-        <strong>Total de ambientes:</strong> <?php echo count($ambientes); ?>
-    </div>
 
-    <?php if (count($ambientes) > 0):
-    ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Categoria</th>
-                    <th>Nome</th>
-                    <th>descricao</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($ambientes as $ambientes): ?>
-                    <tr>
-                        <td><?= $ambientes->id ?></td>
-                        <td><?= $ambientes->categoria ?></td>
-                        <td><?= $ambientes->nome ?></td>
-                        <td><?= $ambientes->descricao ?></td>
-                        <td class="actions">
-                            <a href="editar_reserva.php?id=<?= $ambientes->id ?>"
-                                class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                           <a href="../../../back-end/excluirAmbiente.php?id=<?= $ambientes->id ?>"
-                                class="btn btn-delete"
-                                onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <div class="empty-state">
-            <p>Você ainda não possui ammbientes no sistema.</p>
-            <p>Clique em "Novo ambiente" para criar seu primeiro ambiente.</p>
+    <div class="container">
+        <h1>Ambientes no sistema</h1>
+        <div class="header-table">
+            <?php echo '<h2>' . "Total de ambientes no sistema: " . count($ambientes) . '<a href="../usuario/criarAmbiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+
         </div>
-    <?php endif; ?>
+
+        <?php if (count($ambientes) > 0):
+        ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                        <th>Nome</th>
+                        <th>descricao</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($ambientes as $ambientes): ?>
+                        <tr>
+                            <td><?= $ambientes->id ?></td>
+                            <td><?= $ambientes->categoria ?></td>
+                            <td><?= $ambientes->nome ?></td>
+                            <td><?= $ambientes->descricao ?></td>
+                            <td class="actions">
+                                <a href="editar_reserva.php?id=<?= $ambientes->id ?>"
+                                    class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="../../../back-end/excluirAmbiente.php?id=<?= $ambientes->id ?>"
+                                    class="btn btn-delete"
+                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <div class="empty-state">
+                <p>Você ainda não possui ammbientes no sistema.</p>
+                <p>Clique em "Novo ambiente" para criar seu primeiro ambiente.</p>
+            </div>
+        <?php endif; ?>
     </div>
 
 </main>

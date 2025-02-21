@@ -22,10 +22,11 @@
 
 
 <main>
-    <h1>Reservas no sistema</h1>
+
     <div class="container">
-        <div class="header"> 
-            <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
+        <h1>Reservas no sistema</h1>
+        <div class="header-table">
+            <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
         </div>
 
         <div class="stats">
