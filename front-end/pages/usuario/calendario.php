@@ -40,6 +40,8 @@
             $parsedDate = date_parse($_GET['month_year']);
             $mesAtual = $parsedDate['month'];
             $anoAtual = $parsedDate['year'];
+        } else{
+            $_GET['month_year'] = sprintf("%d-%d", $anoAtual, $mesAtual);
         }
 
         function gerarCalendario($mes, $ano)

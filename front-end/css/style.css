@@ -486,6 +486,12 @@ a {
     border: 1px solid #28a745;
 }
 
+.status-inativa {
+    background-color: #f8d7da;  
+    color: #dc3545;             
+    border: 1px solid #dc3545;  
+}
+
 .actions .btn {
     margin: 0 5px;
     padding: 8px;
