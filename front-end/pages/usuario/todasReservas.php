@@ -27,7 +27,6 @@
         <h1>Reservas no sistema</h1>
         <div class="header-table">
             <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
-
         </div>
 
         <div class="stats">
@@ -49,7 +48,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($reservas as $reserva): ?>
+                    <?php 
+                        $dataHoraAtual = new DateTime('now');
+                        $horaAtual = $dataHoraAtual->format('H:i:s');
+                        foreach ($reservas as $reserva): 
+                    ?>
 
                         <tr>
                             <td><?= $reserva->reservante ?></td>
@@ -57,6 +60,8 @@
 
                             <?php
                             $horas = json_decode($reserva->horas);
+                            $horaFinal = end($horas);
+                            $dataHoraFinal = DateTime::createFromFormat('Y-m-d H:i:s', "$reserva->data_reserva $horaFinal");
                             $stringHoras = "";
                             foreach ($horas as $hora) {
                                 $timeHora = DateTime::createFromFormat('H:i:s', $hora);
@@ -67,9 +72,13 @@
 
                             <td><?= $stringHoras ?></td>
                             <td>
-                                <span class="status status-ativa">
-                                    Ativa
-                                </span>
+                                <?php
+                                    if($dataHoraFinal < $dataHoraAtual){
+                                        echo "<span class='status status-inativa'>Inativa</span>";
+                                    }else{
+                                        echo "<span class='status status-ativa'>Ativa</span>";
+                                    }
+                                ?>
                             </td>
                             <td><?= $reserva->ambiente->categoria ?></td>
                             <td><?= $reserva->ambiente->nome ?></td>

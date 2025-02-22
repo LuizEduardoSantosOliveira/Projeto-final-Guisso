@@ -3,6 +3,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+date_default_timezone_set('America/Sao_Paulo');
+
+
 if (isset($_SESSION['email'])) {
     require_once '../../../back-end/class/rb.php';
     if (!R::testConnection()) {

@@ -24,6 +24,8 @@
         if (isset($_GET['erro'])) {
             echo '<p class = "erro">' . $_GET["erro"] . '<p>';
         } 
+
+        new DateTimeZone('America/Sao_Paulo');
         ?>
     </header>
 
@@ -38,6 +40,8 @@
             $parsedDate = date_parse($_GET['month_year']);
             $mesAtual = $parsedDate['month'];
             $anoAtual = $parsedDate['year'];
+        } else{
+            $_GET['month_year'] = sprintf("%d-%d", $anoAtual, $mesAtual);
         }
 
         function gerarCalendario($mes, $ano)
@@ -79,11 +83,19 @@
 
                 $dataCompleta = sprintf("%d-%02d-%02d", $ano, $mes, $dia);
                 if(isset($_GET['id'])){
-                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&id=" . $_GET['id'];
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&id=" . $_GET['id'] . "&month_year=" . $_GET['month_year'];
                 }else{
-                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta;
+                    $linkReserva = "calendario.php?ambiente=" . $_GET['ambiente'] . "&date=" . $dataCompleta . "&month_year=" . $_GET['month_year'];
                 }
-                $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
+                $dataString = sprintf("%04d-%02d-%02d", $ano, $mes, $dia);
+                $data = DateTime::createFromFormat('Y-m-d', $dataString);
+                $diaAtual = new DateTime('today'); 
+                if($data < $diaAtual){
+                    $calendario .= "<td><span style='color: red;'>". $dia . "</span> </input></td>"; 
+                }else{
+                    $calendario .= "<td><a href='$linkReserva'>$dia</a></td>";
+                }
+                
             }
 
             $espacosRestantes = 7 - (($totalDias + $diaInicial) % 7);
@@ -124,7 +136,7 @@
                 <?php } ?>
                 <?php
                     for ($i=7; $i<=21 ; $i++) { 
-                        $hora = sprintf("%d:00:00", $i);
+                        $hora = sprintf("%02d:00:00", $i);
                         $horaDisponivel = verificarHorario($_GET['date'], $hora, $_GET['ambiente']);
                         if($horaDisponivel == true){
                             echo "<input type='checkbox' name='hora". $i ."' id='hora". $i ."' value='". $hora ."' disabled> <span style='color: red;'>". $i .":00</span> </input>";
