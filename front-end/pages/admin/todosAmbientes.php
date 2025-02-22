@@ -29,7 +29,7 @@
     <div class="container">
         <h1>Ambientes no sistema</h1>
         <div class="header-table">
-            <?php echo '<h2>' . "Total de ambientes no sistema: " . count($ambientes) . '<a href="../usuario/criarAmbiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+            <?php echo '<h2>' . "Total de ambientes no sistema: " . count($ambientes) . '<a href="../admin/criarAmbiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
 
         </div>
 

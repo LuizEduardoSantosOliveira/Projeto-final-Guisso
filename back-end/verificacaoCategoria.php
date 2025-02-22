@@ -9,12 +9,13 @@ if (!R::testConnection()) {
 
 $categoria = R::findOne('categoria', 'nome = ?', [$_GET['category']]);
 
-if (!$categoria) {
+if ($categoria) {
+    header("Location: ../front-end/pages/admin/criarCategoria.php?erro=Categoria já existente");
+    exit();
+} else {
     $category = urlencode($_GET['category']);
     $description = urlencode($_GET['description']);
     header("Location: salvarCategoria.php?category=" . $category . "&description=" . $description);
     exit();
-} else {
-    header("Location: ../front-end/pages/admin/criarCategoria.php?erro=Categoria já existente");
-    exit();
+    
 }

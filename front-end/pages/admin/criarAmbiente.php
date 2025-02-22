@@ -24,7 +24,8 @@
     </header>
 
     <main>
-        <form action="../../../back-end/verificacaoAmbiente.php" method="get">
+    <form action="../../../back-end/salvarAmbiente.php" method="post" enctype="multipart/form-data">
+
             <fieldset>
                 <legend>Criar Ambiente</legend>
                 <label for="category">Categoria</label>
@@ -39,6 +40,9 @@
 
                 <label for="ambient">Nome do Ambiente:</label>
                 <input type="text" name="ambient" id="ambient"><br><br>
+
+                <label for="image">Imagem do ambiente(Jpeg,Png e Jpg)</label>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
 
                 <label for="description">Descrição do Ambiente:</label><br>
                 <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>

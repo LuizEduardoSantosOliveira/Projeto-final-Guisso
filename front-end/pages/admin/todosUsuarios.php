@@ -41,6 +41,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nome</th>
                             <th>Criado em</th>
                             <th>Email</th>
@@ -53,6 +54,7 @@
                     <tbody>
                         <?php foreach ($usuarios as $usuario): ?>
                             <tr>
+                                <td><?= $usuario->id ?></td>
                                 <td><?= $usuario->nome ?></td>
                                 <td><?= date('d/m/Y', strtotime($usuario->criado_em)) ?></td>
                                 <td><?= $usuario->email ?></td>
