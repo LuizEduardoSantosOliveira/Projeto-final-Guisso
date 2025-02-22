@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -20,6 +20,7 @@
         include "../../../back-end/buscarTodosAmbientes.php";
         include "../../../back-end/buscarTodasCategorias.php";
         include "../../../back-end/buscarTodosUsuarios.php";
+
         ?>
         <nav class="menu">
             <ul>
@@ -74,12 +75,12 @@
                 ?>
             </div>
         </div>
-        
+
         <div class="container">
-        <h1>Ultimas Reservas Feitas no sistema</h1>
+            <h1>Ultimas Reservas Feitas no sistema</h1>
             <div class="header-table">
-               <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>' ; ?>
-                
+                <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+
             </div>
 
             <?php
@@ -149,7 +150,9 @@
     </main>
 
     <footer>
-
+        <?php
+        include "../../../inc/rodape.php"
+        ?>
 
     </footer>
 

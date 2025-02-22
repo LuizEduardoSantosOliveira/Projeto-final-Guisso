@@ -15,7 +15,7 @@
         include "../../../inc/cabecalho.php";
         include "../../../inc/validacao.php";
         ?>
-        <nav>
+        <nav class="menu">
             <ul>
                 <li><a href="ambiente.php">Fazer reserva</a></li>
                 <li><a href="reservasUsuario.php">Minhas reservas</a></li>
@@ -27,7 +27,7 @@
     </header>
 
     <main>
-        <h1>Últimas Reservas</h1>
+       
 
         <?php
         // Incluir o arquivo que busca todas as reservas
@@ -37,16 +37,11 @@
             $ultimasReservas = array_slice($reservas, 0, 5);
         ?>
             <div class="container">
-                <div class="header">
-                    <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
-                </div>
+            <h1>Últimas Reservas</h1>
+            <div class="header-table">
+                <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
 
-                <h1>Minhas Reservas</h1>
-
-                <div class="stats">
-                    <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
-                </div>
-
+            </div>
 
                 <table>
                     <thead>

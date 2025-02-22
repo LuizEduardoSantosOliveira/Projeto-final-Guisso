@@ -1,42 +1,36 @@
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-
-
-
 if (isset($_SESSION['email'])) {
     require_once '../../../back-end/class/rb.php';
-    $paginaAtual = basename($_SERVER['PHP_SELF']);
-
-    if ($_SESSION['type'] === "admin") {
-        if ($paginaAtual !== 'adminPainel.php') {
-            echo '<a href="../../../front-end/pages/admin/AdminPainel.php">Home</a>';
-        }
-    } else {
-        if ($paginaAtual !== 'home.php') {
-            echo '<a href="../../../front-end/pages/usuario/home.php">Home</a>';
-        }
-    }
-
     if (!R::testConnection()) {
-
         R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
-
         if (!R::testConnection()) {
             die('Falha na conexão com o banco de dados');
         }
     }
 
+    $paginaAtual = basename($_SERVER['PHP_SELF']);
     $usuario = R::findOne('usuario', 'email = ? ', [$_SESSION['email']]);
     $_SESSION['name'] = $usuario->nome;
-    echo '<h1>Login: ' . strtoupper($_SESSION['name']) . '</h1>';
-    echo '<a href="../../../back-end/logout.php">Sair</a>';;
+
+    echo '<div class="header-login">';
+    echo '<h1 class="username"><i class="fa-solid fa-user"></i> ' . strtoupper($_SESSION['name']) . '</h1>';
+    echo '<a class="logout" href="../../../back-end/logout.php">Sair</a>';
+    
+    if ($_SESSION['type'] === "admin") {
+        if ($paginaAtual !== 'adminPainel.php') {
+           
+            echo '<a class="home-link" href="../../../front-end/pages/admin/adminPainel.php"><i class="fa-solid fa-house"></i></a>';
+        }
+    } else {
+        if ($paginaAtual !== 'home.php') {
+            echo '<a class="home-link" href="../../../front-end/pages/usuario/home.php"><i class="fa-solid fa-house"></i></a>';
+        }
+    }
+    
+    echo '</div>';
 }
-
-
-
 ?>
-
