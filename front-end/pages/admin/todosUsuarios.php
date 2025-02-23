@@ -63,7 +63,7 @@
                                 <td class="actions">
                                     <a href="cadastrarUsuario.php?id=<?= $usuario->id ?>"
                                         class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
+                                    <a href="../../../back-end/excluirUsuario.php?id=<?= $usuario->id ?>"
                                         class="btn btn-delete"
                                         onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                         <i class="fa-solid fa-trash"></i>
