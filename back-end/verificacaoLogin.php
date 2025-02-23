@@ -16,6 +16,6 @@ if ($usuarioValido) {
     header("Location: verificacaoAdmin.php?email=" . $email . '&password=' . $password);
     exit();
 } else {
-   header("Location: ../front-end/pages/usuario/login.php?erro=Usuário inválido");
+   header("Location: ../front-end/pages/login.php?erro=Usuário inválido");
     exit();
 }

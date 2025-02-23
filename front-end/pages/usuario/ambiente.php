@@ -22,6 +22,7 @@
 
     <main>
         <?php
+         echo '<div class = "ambient-container">';
         foreach ($categorias as $categoria) {
             echo '<h2>' . htmlspecialchars($categoria->nome) . '</h2>';
             foreach ($ambientes as $ambiente) {
@@ -31,22 +32,25 @@
                     } else {
                         $linkcalendario = "calendario.php?ambiente=" . $ambiente->id;
                     }
-
+                   
                     echo '<div class = "card-ambient">';
                     echo '<h4><a href="' . $linkcalendario . '">' . htmlspecialchars($ambiente->nome) . '</a></h4>';
                     echo '<p>' . htmlspecialchars($ambiente->descricao) . '</p>';
 
                     if (!empty($ambiente->imagem)) {
-                        $imagemPath = "../../" . ltrim($ambiente->imagem, './');
+                        $imagemPath = "../../../" . ltrim($ambiente->imagem, './');
                         echo '<img src="' . htmlspecialchars($imagemPath) . '" alt="Imagem do ambiente" style="width: 300px; height: auto;">';
                     } else {
                         echo '<p>Sem imagem disponível</p>';
                     }
 
+                    
+                   
                     echo '</div>';
                 }
             }
         }
+        echo '</div>';
         ?>
     </main>
 

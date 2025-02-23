@@ -46,7 +46,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Data da Reserva</th>
                             <th>Horário Reservado</th>
                             <th>Status</th>
@@ -58,7 +57,6 @@
                     <tbody>
                         <?php foreach ($reservas as $reserva): ?>
                             <tr>
-                                <td><?= $reserva->id ?></td>
                                 <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
                                 <?php
                                 $horas = json_decode($reserva->horas);
@@ -78,12 +76,12 @@
                                 <td><?= $reserva->ambiente->categoria ?></td>
                                 <td><?= $reserva->ambiente->nome ?></td>
                                 <td class="actions">
-                                    <a href="editar_reserva.php?id=<?= $reserva->id ?>"
-                                        class="btn btn-edit">Editar</a>
-                                    <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
+                                    <a href="editar_reserva.php?id=<?= $usuario->id ?>"
+                                        class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
                                         class="btn btn-delete"
                                         onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                        Excluir
+                                        <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>

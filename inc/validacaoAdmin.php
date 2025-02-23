@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if (isset($_SESSION['type'])) {
     if($_SESSION['type'] != "admin"){
-        header('Location: ../usuario/login.php');
+        header('Location: ../../pages/login.php');
         exit;
     }   
   

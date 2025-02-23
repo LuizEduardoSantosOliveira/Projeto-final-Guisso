@@ -30,18 +30,22 @@
     </header>
 
     <main>
+        <div class="admin-form-container">
+            <form class="admin-form" action="../../../back-end/verificacaoCategoria.php" method="get">
+            <h1>Cadastro de Categoria</h1>
+                <label for="category">Nome da Categoria:</label>
+                <input type="text" name="category" id="category">
+
+                <label for="description">Descrição da categoria:</label><br>
+                <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
+
+                <button class="submit" type="submit">Enviar</button>
+
+            </form>
+
+        </div>
 
 
-        <form action="../../../back-end/verificacaoCategoria.php" method="get">
-            <label for="category">Nome da Categoria:</label>
-            <input type="text" name="category" id="category">
-
-            <label for="description">Descrição da categoria:</label><br>
-            <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
-
-            <input type="submit" value="Enviar">
-
-        </form>
 
     </main>
 

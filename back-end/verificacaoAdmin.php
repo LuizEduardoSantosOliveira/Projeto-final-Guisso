@@ -16,7 +16,7 @@ $admin = R::findOne('usuario', 'email = ? AND senha = ? AND tipo = ?', [$_GET['e
 
 if ($admin) {
     $_SESSION['email'] = $_GET['email'];
-    $_SESSION['type'] = $usuarioValido -> tipo;
+    $_SESSION['type'] = $admin -> tipo;
     header("Location: ../front-end/pages/admin/adminPainel.php");
    
     exit();

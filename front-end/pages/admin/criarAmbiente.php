@@ -24,34 +24,34 @@
     </header>
 
     <main>
-    <form action="../../../back-end/salvarAmbiente.php" method="post" enctype="multipart/form-data">
+        <div class="admin-form-ambient-container">
+            <form class="admin-ambient-form" action="../../../back-end/salvarAmbiente.php" method="post" enctype="multipart/form-data">
+                <h1>Cadastro de ambiente</h1>
+                    <label for="category">Categoria</label>
+                    <select name="category" id="category">
+                        <?php
+                        $categorias = R::findAll('categoria');
+                        foreach ($categorias as $categoria) {
+                            echo '<option value="' . $categoria->id . '">' . htmlspecialchars($categoria->nome) . '</option>';
+                        }
+                        ?>
+                    </select>
 
-            <fieldset>
-                <legend>Criar Ambiente</legend>
-                <label for="category">Categoria</label>
-                <select name="category" id="category">
-                    <?php
-                    $categorias = R::findAll('categoria');
-                    foreach ($categorias as $categoria) {
-                        echo '<option value="' . $categoria->id . '">' . htmlspecialchars($categoria->nome) . '</option>';
-                    }
-                    ?>
-                </select>
+                    <label for="ambient">Nome do Ambiente:</label>
+                    <input type="text" name="ambient" id="ambient"><br><br>
 
-                <label for="ambient">Nome do Ambiente:</label>
-                <input type="text" name="ambient" id="ambient"><br><br>
+                    <label for="image">Imagem do ambiente(Jpeg,Png e Jpg)</label>
+                    <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
 
-                <label for="image">Imagem do ambiente(Jpeg,Png e Jpg)</label>
-                <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
+                    <label for="description">Descrição do Ambiente:</label><br>
+                    <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
 
-                <label for="description">Descrição do Ambiente:</label><br>
-                <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
 
-               
 
-                <input type="submit" value="Enviar">
-            </fieldset>
-        </form>
+                    <button class="submit" type="submit">Enviar</button>
+            </form>
+        </div>
+
     </main>
 
     <footer>

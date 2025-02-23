@@ -7,5 +7,5 @@ unset($_SESSION['email']);
 unset($_SESSION['type']);
 session_destroy();
 
-header('Location: ../front-end/pages/usuario/login.php');
+header('Location: ../front-end/pages/login.php');
 exit;

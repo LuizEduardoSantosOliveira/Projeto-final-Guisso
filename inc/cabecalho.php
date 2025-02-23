@@ -25,11 +25,12 @@ if (isset($_SESSION['email'])) {
     
     if ($_SESSION['type'] === "admin") {
         if ($paginaAtual !== 'adminPainel.php') {
-           
+            echo $_SESSION['type'];
             echo '<a class="home-link" href="../../../front-end/pages/admin/adminPainel.php"><i class="fa-solid fa-house"></i></a>';
         }
     } else {
         if ($paginaAtual !== 'home.php') {
+            echo $_SESSION['type'];
             echo '<a class="home-link" href="../../../front-end/pages/usuario/home.php"><i class="fa-solid fa-house"></i></a>';
         }
     }
