@@ -14,16 +14,24 @@ if (!R::testConnection()) {
 
 date_default_timezone_set('America/Sao_Paulo');
 
+if(isset($_GET['id'])){
+    $usuario = R::load('usuario', $_GET['id']);
+    $usuario->nome = $_GET["name"];
+    $usuario->email = $_GET["email"];
+    $usuario->senha = $_GET["password"];
+    $usuario->tipo = $_GET["type"];
+    R::store($usuario);
+}else{
+    $usuario = R::dispense('usuario');
+    $usuario->nome = $_GET["name"];
+    $usuario->email = $_GET["email"];
+    $usuario->senha = $_GET["password"];
+    $usuario->tipo = $_GET["type"];
+    $usuario->criado_em = date('Y-m-d H:i:s');
+    $id = R::store($usuario);
+}
 
-$usuario = R::dispense('usuario');
-$usuario->nome = $_GET["name"];
-$usuario->email = $_GET["email"];
-$usuario->senha = $_GET["password"];
-$usuario->tipo = $_GET["type"];
-$usuario->criado_em = date('Y-m-d H:i:s');
 
-
-$id = R::store($usuario);
 R::close();
 
 header('Location: ../front-end/pages/admin/todosUsuarios.php');
