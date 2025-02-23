@@ -53,7 +53,7 @@
                                     class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="../../../back-end/excluirCategoria.php?id=<?= $categoria->id ?>"
                                     class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                    onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
@@ -63,7 +63,7 @@
             </table>
         <?php else: ?>
             <div class="empty-state">
-                <p>Você ainda não possui categorias.</p>
+                <p>Ainda não há categorias.</p>
                 <p>Clique em "Nova categoria" para criar sua primeira categoria.</p>
             </div>
         <?php endif; ?>
