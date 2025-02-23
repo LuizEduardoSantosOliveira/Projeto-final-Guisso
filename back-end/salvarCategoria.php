@@ -10,15 +10,18 @@ if (!R::testConnection()) {
     }
 }
 
+if(isset($_GET['id'])){
+    $categoria = R::load('categoria', $_GET['id']);
+    $categoria->nome = $_GET['category'];
+    $categoria->descricao = $_GET['description'];
+    R::store($categoria);
+}else{
+    $categoria = R::dispense('categoria');
+    $categoria->nome = $_GET['category'];
+    $categoria->descricao = $_GET['description'];
+    $id = R::store($categoria);
+}
 
-$categoria = R::dispense('categoria');
-$categoria->nome = $_GET['category'];
-$categoria->descricao = $_GET['description'];
-
-
-$id = R::store($categoria);
 R::close();
-
-
 header('Location: ../front-end/pages/admin/todasCategorias.php');
 exit();
