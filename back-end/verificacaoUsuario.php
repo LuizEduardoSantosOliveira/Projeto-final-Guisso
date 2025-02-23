@@ -10,18 +10,30 @@ if (!R::testConnection()) {
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$usuario = R::findOne('usuario', 'email = ? ', [$_GET['email']]);
 
-
-if (!$usuario) {
+if(isset($_GET['id'])){
+    $usuario = R::findOne('usuario', 'email = ? ', [$_GET['email']]);
     $email = urlencode($_GET['email']);
     $password = urlencode($_GET['password']);
     $name = urlencode($_GET['name']);
     $type = urlencode($_GET['type']);
-    header("Location: salvarUsuario.php?email=" . $email . "&password=" . $password .  "&name=" . $name . "&type=" . $type);
+    $id = urlencode($_GET['id']);
+    header("Location: salvarUsuario.php?email=" . $email . "&password=" . $password .  "&name=" . $name . "&type=" . $type . "&id=" . $id);
     exit();
-} else {
-    header("Location: ../front-end/pages/admin/cadastrarUsuario.php?erro=Usuário ja existente");
+}else{
+    $usuario = R::findOne('usuario', 'email = ? ', [$_GET['email']]);
+
+    if (!$usuario) {
+        $email = urlencode($_GET['email']);
+        $password = urlencode($_GET['password']);
+        $name = urlencode($_GET['name']);
+        $type = urlencode($_GET['type']);
+        header("Location: salvarUsuario.php?email=" . $email . "&password=" . $password .  "&name=" . $name . "&type=" . $type);
     exit();
+    } else {
+        header("Location: ../front-end/pages/admin/cadastrarUsuario.php?erro=Usuário ja existente");
+        exit();
+    }
 }
+
 

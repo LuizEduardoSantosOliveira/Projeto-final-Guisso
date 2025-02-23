@@ -15,6 +15,9 @@
     include "../../../inc/cabecalho.php";
     include "../../../inc/validacaoAdmin.php";
     include "../../../inc/validacao.php";
+    if(isset($_GET['id'])){
+        include "../../../back-end/buscarUsuario.php";
+    }
 
     if (isset($_GET['erro'])) {
         echo '<p class = "erro">' . $_GET["erro"] . '<p>';
@@ -25,22 +28,50 @@
 <main>
     <form action="../../../back-end/verificacaoUsuario.php" method="get">
         <label for="name">Nome</label>
-        <input type="text" name="name" id="name">
-
+        <?php
+            if(isset($_GET['id'])){
+                $usuario = buscarUsuario($_GET['id']);
+                echo '<input type="hidden" name="id" id="id" value="' . $_GET['id'] . '">';
+            }
+            if(isset($_GET['id'])){
+                echo '<input type="text" name="name" id="name" value="'. $usuario->nome .'">';
+            }else{
+                echo '<input type="text" name="name" id="name">';
+            }
+        ?>
+        
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" pattern=".+@(gmail\.com|outlook\.com|hotmail\.com|live\.com|msn\.com)" size="30" required>
+        <?php
+            if(isset($_GET['id'])){
+                echo '<input type="email" name="email" id="email" value="'. $usuario->email .'" pattern=".+@(gmail\.com|outlook\.com|hotmail\.com|live\.com|msn\.com)" size="30" required>';
+            }else{
+                echo '<input type="email" name="email" id="email" pattern=".+@(gmail\.com|outlook\.com|hotmail\.com|live\.com|msn\.com)" size="30" required>';
+            }
+        ?>
 
         <label for="password">Senha:</label>
-        <input type="password" name="password" id="password" required>
+        <?php
+            if(isset($_GET['id'])){
+                echo '<input type="password" name="password" id="password" value="'. $usuario->senha .'" required>';
+            }else{
+                echo '<input type="password" name="password" id="password" required>';
+            }
+        ?>
 
         <label for="type">Tipo</label>
-        <select name="type" id="type">
-            <option value="admin">Admin</option>
-            <option value="user">Usuário</option>
-
-
-        </select>
-        
+        <?php
+            if(isset($_GET['id'])){
+                echo '<select name="type" id="type" value="'. $usuario->tipo .'">
+                     <option value="admin">Admin</option>
+                     <option value="user">Usuário</option>
+                     </select>';
+            }else{
+                echo '<select name="type" id="type">
+                     <option value="admin">Admin</option>
+                     <option value="user">Usuário</option>
+                     </select>';
+            }
+        ?>
 
         <input type="submit" value="Enviar">
     </form>

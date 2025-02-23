@@ -61,7 +61,7 @@
                                 <td><?= $usuario->senha ?></td>
                                 <td><?= $usuario->tipo ?></td>
                                 <td class="actions">
-                                    <a href="editar_reserva.php?id=<?= $usuario->id ?>"
+                                    <a href="cadastrarUsuario.php?id=<?= $usuario->id ?>"
                                         class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
                                         class="btn btn-delete"
