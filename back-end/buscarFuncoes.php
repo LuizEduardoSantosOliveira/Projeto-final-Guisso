@@ -15,4 +15,14 @@
         $usuario = R::findone('usuario', 'id = ?', [$id]);
         return $usuario;
     }
+
+    function buscarCategoria($id){
+        $categoria = R::findone('categoria', 'id = ?', [$id]);
+        return $categoria;
+    }
+
+    function buscarAmbiente($id){
+        $ambiente = R::findone('ambiente', 'id = ?', [$id]);
+        return $ambiente;
+    }
 ?>

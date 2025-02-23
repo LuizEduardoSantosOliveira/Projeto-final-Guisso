@@ -49,7 +49,7 @@
                             <td><?= $categoria->nome ?></td>
                             <td><?= $categoria->descricao ?></td>
                             <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $categoria->id ?>"
+                                <a href="criarCategoria.php?id=<?= $categoria->id ?>"
                                     class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="../../../back-end/excluirCategoria.php?id=<?= $categoria->id ?>"
                                     class="btn btn-delete"

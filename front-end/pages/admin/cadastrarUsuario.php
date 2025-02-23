@@ -16,7 +16,7 @@
     include "../../../inc/validacaoAdmin.php";
     include "../../../inc/validacao.php";
     if(isset($_GET['id'])){
-        include "../../../back-end/buscarUsuario.php";
+        include "../../../back-end/buscarFuncoes.php";
     }
 
     if (isset($_GET['erro'])) {
