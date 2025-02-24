@@ -61,12 +61,9 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php else: ?>
-            <div class="empty-state">
-                <p>Ainda não há categorias.</p>
-                <p>Clique em "Nova categoria" para criar sua primeira categoria.</p>
-            </div>
-        <?php endif; ?>
+        <?php else:
+            echo "<div class='empty-state'><p>Você ainda não possui Categorias.</p><p>Clique em 'Criar categoria' para criar sua primeira categoria.</p></div>";
+        endif; ?>
     </div>
 
 </main>

@@ -22,19 +22,16 @@ if (isset($_SESSION['email'])) {
     echo '<div class="header-login">';
     echo '<h1 class="username"><i class="fa-solid fa-user"></i> ' . strtoupper($_SESSION['name']) . '</h1>';
     echo '<a class="logout" href="../../../back-end/logout.php">Sair</a>';
-    
+
     if ($_SESSION['type'] === "admin") {
         if ($paginaAtual !== 'adminPainel.php') {
-            echo $_SESSION['type'];
             echo '<a class="home-link" href="../../../front-end/pages/admin/adminPainel.php"><i class="fa-solid fa-house"></i></a>';
         }
     } else {
         if ($paginaAtual !== 'home.php') {
-            echo $_SESSION['type'];
             echo '<a class="home-link" href="../../../front-end/pages/usuario/home.php"><i class="fa-solid fa-house"></i></a>';
         }
     }
-    
+
     echo '</div>';
 }
-?>

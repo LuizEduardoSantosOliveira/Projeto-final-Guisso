@@ -65,12 +65,9 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php else: ?>
-            <div class="empty-state">
-                <p>Você ainda não possui ammbientes no sistema.</p>
-                <p>Clique em "Novo ambiente" para criar seu primeiro ambiente.</p>
-            </div>
-        <?php endif; ?>
+        <?php else:
+            echo "<div class='empty-state'><p>Você ainda não possui ambientes.</p><p>Clique em 'Criar ambiente' para criar seu primeiro ambiente.</p></div>";
+        endif; ?>
     </div>
 
 </main>

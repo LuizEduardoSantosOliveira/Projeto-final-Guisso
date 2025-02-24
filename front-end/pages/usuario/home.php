@@ -27,7 +27,7 @@
     </header>
 
     <main>
-       
+
 
         <?php
         // Incluir o arquivo que busca todas as reservas
@@ -37,11 +37,11 @@
             $ultimasReservas = array_slice($reservas, 0, 5);
         ?>
             <div class="container">
-            <h1>Últimas Reservas</h1>
-            <div class="header-table">
-                <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+                <h1>Últimas Reservas</h1>
+                <div class="header-table">
+                    <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
 
-            </div>
+                </div>
 
                 <table>
                     <thead>
@@ -93,7 +93,7 @@
         <?php
         } else {
             // Caso não tenha reservas
-            echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Nova Reserva' para criar sua primeira reserva.</p></div>";
+            echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Fazer reserva' para criar sua primeira reserva.</p></div>";
         }
         ?>
     </main>

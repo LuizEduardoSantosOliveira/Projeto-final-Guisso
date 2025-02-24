@@ -48,10 +48,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                        $dataHoraAtual = new DateTime('now');
-                        $horaAtual = $dataHoraAtual->format('H:i:s');
-                        foreach ($reservas as $reserva): 
+                    <?php
+                    $dataHoraAtual = new DateTime('now');
+                    $horaAtual = $dataHoraAtual->format('H:i:s');
+                    foreach ($reservas as $reserva):
                     ?>
 
                         <tr>
@@ -73,11 +73,11 @@
                             <td><?= $stringHoras ?></td>
                             <td>
                                 <?php
-                                    if($dataHoraFinal < $dataHoraAtual){
-                                        echo "<span class='status status-inativa'>Inativa</span>";
-                                    }else{
-                                        echo "<span class='status status-ativa'>Ativa</span>";
-                                    }
+                                if ($dataHoraFinal < $dataHoraAtual) {
+                                    echo "<span class='status status-inativa'>Inativa</span>";
+                                } else {
+                                    echo "<span class='status status-ativa'>Ativa</span>";
+                                }
                                 ?>
                             </td>
                             <td><?= $reserva->ambiente->categoria ?></td>
@@ -95,12 +95,9 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php else: ?>
-            <div class="empty-state">
-                <p>Você ainda não possui reservas.</p>
-                <p>Clique em "Nova Reserva" para criar sua primeira reserva.</p>
-            </div>
-        <?php endif; ?>
+        <?php else:
+            echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Fazer reserva' para criar sua primeira reserva.</p></div>";
+        endif; ?>
     </div>
 
 </main>

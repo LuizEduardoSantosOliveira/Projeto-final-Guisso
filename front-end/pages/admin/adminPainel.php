@@ -138,12 +138,9 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            <?php else: ?>
-                <div class="empty-state">
-                    <p>Você ainda não possui reservas.</p>
-                    <p>Clique em "Nova Reserva" para criar sua primeira reserva.</p>
-                </div>
-            <?php endif; ?>
+            <?php else:
+                echo "<div class='empty-state'><p>Não há reservas no sistema ainda.</p><p>Clique em 'Fazer reserva' para criar sua primeira reserva.</p></div>";
+            endif; ?>
         </div>
 
 
