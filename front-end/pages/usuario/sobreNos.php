@@ -11,18 +11,6 @@
 </head>
 
 <body>
-    <style>
-        #fotoimg {
-            height: 300px;
-            width: 300px;
-            border-radius: 100%;
-            border: 5px solid #ffffff;
-            margin: 0 auto;
-            display: block;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
     <header>
         <?php
         include "../../../inc/cabecalho.php";
