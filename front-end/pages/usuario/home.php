@@ -55,12 +55,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($reservas as $reserva): ?>
+                        <?php
+                         $dataHoraAtual = new DateTime('now');
+                         $horaAtual = $dataHoraAtual->format('H:i:s');
+                        foreach ($reservas as $reserva):?> 
+                        
                             <tr>
                                 <td><?= date('d/m/Y', strtotime($reserva->data_reserva)) ?></td>
                                 <?php
                                 $horas = json_decode($reserva->horas);
                                 $stringHoras = "";
+                                $horaFinal = end($horas);
+                                $dataHoraFinal = DateTime::createFromFormat('Y-m-d H:i:s', "$reserva->data_reserva $horaFinal");
                                 foreach ($horas as $hora) {
                                     $timeHora = DateTime::createFromFormat('H:i:s', $hora);
                                     $stringHora = $timeHora->format('H:i');
@@ -69,9 +75,13 @@
                                 ?>
                                 <td><?= $stringHoras ?></td>
                                 <td>
-                                    <span class="status status-ativa">
-                                        Ativa
-                                    </span>
+                                    <?php
+                                        if($dataHoraFinal < $dataHoraAtual){
+                                            echo "<span class='status status-inativa'>Inativa</span>";
+                                        }else{
+                                            echo "<span class='status status-ativa'>Ativa</span>";
+                                        }
+                                    ?>
                                 </td>
                                 <td><?= $reserva->ambiente->categoria ?></td>
                                 <td><?= $reserva->ambiente->nome ?></td>
