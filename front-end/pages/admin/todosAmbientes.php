@@ -53,7 +53,7 @@
                             <td><?= $ambientes->nome ?></td>
                             <td><?= $ambientes->descricao ?></td>
                             <td class="actions">
-                                <a href="editar_reserva.php?id=<?= $ambientes->id ?>"
+                                <a href="criarAmbiente.php?id=<?= $ambientes->id ?>"
                                     class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="../../../back-end/excluirAmbiente.php?id=<?= $ambientes->id ?>"
                                     class="btn btn-delete"

@@ -16,6 +16,9 @@
         include "../../../inc/cabecalho.php";
         include "../../../back-end/buscarTodasCategorias.php";
         include "../../../inc/validacao.php";
+        if(isset($_GET['id'])){
+            include "../../../back-end/buscarFuncoes.php";
+        }
 
         if (isset($_GET['erro'])) {
             echo '<p class = "erro">' . $_GET["erro"] . '<p>';
@@ -26,14 +29,24 @@
     <main>
         <div class="admin-form-ambient-container">
             <form class="admin-ambient-form" action="../../../back-end/salvarAmbiente.php" method="post" enctype="multipart/form-data">
+                <?php
+                    if(isset($_GET['id'])){
+                        $ambiente = buscarAmbiente($_GET['id']);
+                        echo '<input type="hidden" name="id" id="id" value="' . $_GET['id'] . '">';
+                    }
+                ?>
                 <h1>Cadastro de ambiente</h1>
                     <label for="category">Categoria</label>
                     <select name="category" id="category">
                         <?php
-                        $categorias = R::findAll('categoria');
-                        foreach ($categorias as $categoria) {
-                            echo '<option value="' . $categoria->id . '">' . htmlspecialchars($categoria->nome) . '</option>';
-                        }
+                            $categorias = R::findAll('categoria');
+                            foreach ($categorias as $categoria) {
+                                if($categoria->id == $ambiente->id_categoria){
+                                    echo '<option value="' . $categoria->id . '" selected>' . htmlspecialchars($categoria->nome) . '</option>';
+                                }else{
+                                    echo '<option value="' . $categoria->id . '">' . htmlspecialchars($categoria->nome) . '</option>';
+                                }
+                            }
                         ?>
                     </select>
 
