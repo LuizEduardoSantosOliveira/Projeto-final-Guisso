@@ -73,6 +73,8 @@
             }
         ?>
 
+        <button type="submit">Enviar</button>
+
 </main>
 
 <footer>

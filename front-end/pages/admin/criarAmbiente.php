@@ -51,16 +51,25 @@
                     </select>
 
                     <label for="ambient">Nome do Ambiente:</label>
-                    <input type="text" name="ambient" id="ambient"><br><br>
+                    <?php
+                        if(isset($_GET['id'])){
+                            echo '<input type="text" name="ambient" id="ambient" value="' . $ambiente->nome . '"><br><br>';
+                        }else{
+                           echo '<input type="text" name="ambient" id="ambient"><br><br>';
+                        }
+                    ?>
 
                     <label for="image">Imagem do ambiente(Jpeg,Png e Jpg)</label>
-                    <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
+                           <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
 
                     <label for="description">Descrição do Ambiente:</label><br>
-                    <textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>
-
-
-
+                    <?php
+                        if(isset($_GET['id'])){
+                            echo '<textarea name="description" id="description" cols="80" rows="5">'. $ambiente->descricao .'</textarea><br><br>';
+                        }else{
+                           echo '<textarea name="description" id="description" cols="80" rows="5"></textarea><br><br>';
+                        }
+                    ?>
                     <button class="submit" type="submit">Enviar</button>
             </form>
         </div>

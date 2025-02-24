@@ -1,6 +1,6 @@
 <?php
 
-require_once '../back-end/class/rb.php';
+require_once 'class/rb.php';
 
 if (!R::testConnection()) {
     R::setup('mysql:host=localhost;dbname=sistema_reservas', 'root', '');
