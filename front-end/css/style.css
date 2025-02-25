@@ -24,6 +24,9 @@
     --color_green_dark: #15803d;
     --color_green_light: #4CAF50;
 
+    --color_blue_normal: #1e90ff;
+    --color_blue_light: #87cefa;
+
 }
 
 
@@ -235,7 +238,7 @@ header {
     color: var(--color_red_light);
 }
 
-.logout {
+.loginVisitante, .visitanteReservas {
     color: var(--color_white_normal);
     padding: 0.5em 1em;
     border: 1px solid var(--color_white_normal);
@@ -243,11 +246,37 @@ header {
     transition: all 0.3s ease;
 }
 
-.logout:hover {
-    background-color: var(--color_red_light);
-    color: var(--color_white_light);
+.logout {
+    color: var(--color_white_normal);
+    padding: 0.5em 1em;
+    border: 1px solid var(--color_white_normal);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: var(--color_red_normal);
 }
 
+.logout:hover {
+    background-color: var(--color_red_light); 
+    color: var(--color_white_light); 
+}
+
+.visitanteReservas {
+    background-color: var(--color_blue_normal); 
+}
+
+.visitanteReservas:hover {
+    background-color: var(--color_blue_light); 
+    color: var(--color_white_light); 
+}
+
+.loginVisitante {
+    background-color: var(--color_green_normal); 
+}
+
+.loginVisitante:hover {
+    background-color: var(--color_green_light); 
+    color: var(--color_white_light); 
+}
 
 footer {
     background-color: var(--color_normal);
