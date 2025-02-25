@@ -32,7 +32,7 @@
         <div class="container">
             <h1>Usuários no Sistema</h1>
             <div class="header-table">
-                <?php echo '<h2>' . "Total de usuários no sistema: " . count($usuario) . '<a href="../usuario/cadastrarUsuario.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+                <?php echo '<h2>' . "Total de usuários no sistema: " . count($usuario) . '<a href="cadastrarUsuario.php" class="btn btn-new">Novo Usuário</a>' . '</h2>'; ?>
 
             </div>
 

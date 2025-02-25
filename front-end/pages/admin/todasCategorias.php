@@ -28,7 +28,7 @@
     <div class="container">
         <h1>Categorias no sistema</h1>
         <div class="header-table">
-            <?php echo '<h2>' . "Total de categorias no sistema: " . count($categorias) . '<a href="../usuario/ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+            <?php echo '<h2>' . "Total de categorias no sistema: " . count($categorias) . '<a href="criarCategoria.php" class="btn btn-new">Criar categoria</a>' . '</h2>'; ?>
 
         </div>
         <?php if (count($categorias) > 0):
