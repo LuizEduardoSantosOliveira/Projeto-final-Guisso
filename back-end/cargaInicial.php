@@ -10,6 +10,11 @@ if (!R::testConnection()) {
     }
 }
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 date_default_timezone_set('America/Sao_Paulo');
 
 $usuarioValido = R::findOne('usuario', 'tipo = ?', ['root']);
@@ -27,9 +32,8 @@ if (!$usuarioValido) {
 
     $id = R::store($usuario);
     R::close();
-
-    echo "Usuário root criado com sucesso";     
     header('Location: ../front-end/pages/admin/adminPainel.php');
+    $_SESSION["type"] = "root";
     return $id;
     exit;
 } else {

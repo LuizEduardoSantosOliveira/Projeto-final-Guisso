@@ -23,7 +23,7 @@ if (isset($_SESSION['email'])) {
     echo '<h1 class="username"><i class="fa-solid fa-user"></i> ' . strtoupper($_SESSION['name']) . '</h1>';
     echo '<a class="logout" href="../../../back-end/logout.php">Sair</a>';
 
-    if ($_SESSION['type'] === "admin") {
+    if ($_SESSION['type'] === "admin" || $_SESSION['type'] === "root"){
         if ($paginaAtual !== 'adminPainel.php') {
             echo '<a class="home-link" href="../../../front-end/pages/admin/adminPainel.php"><i class="fa-solid fa-house"></i></a>';
         }
@@ -38,8 +38,8 @@ if (isset($_SESSION['email'])) {
 
 if(isset($_GET['visitante'])){
     echo '<div class="header-login">';
-    echo '<a class="visitanteReservas" href="todasReservas.php?visitante=true">Reservas Cadastradas</a>';
+    echo '<a class="header-visitor" href="todasReservas.php?visitante=true">Reservas Cadastradas</a>';
     echo '<h1 class="username"><i class="fa-solid fa-user"></i>Visitante</h1>';
-    echo '<a class="loginVisitante" href="../login.php">Entrar</a>';
+    echo '<a class="header-visitor" href="../login.php">Entrar</a>';
     echo '</div>';   
 }

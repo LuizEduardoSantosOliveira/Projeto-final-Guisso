@@ -30,10 +30,13 @@
         <h1>Reservas no sistema</h1>
         <div class="header-table">
             <?php 
-                if(!isset($_GET['visitante'])){
+                if(isset($_GET['visitante'])){
                     echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '</h2>';
                 }else{
-                    echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>';
+                   
+                   echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Criar reserva</a>' . '</h2>';
+    
+        
                 }
             ?>
         </div>
@@ -55,7 +58,7 @@
                         <th>ambiente</th>
                         <?php 
                             if(isset($_SESSION['email'])):
-                            if ($usuario->tipo == 'admin'): 
+                            if ($usuario->tipo != 'visitante'): 
                         ?>
                             <th>Ações</th>
                         <?php endif; endif; ?>     
@@ -98,7 +101,7 @@
                             <td><?= $reserva->ambiente->nome ?></td>
                             <?php
                                 if(isset($_SESSION['email'])):
-                                if ($usuario->tipo == 'admin'):  
+                                if ($usuario->tipo !='visitante'):  
                             ?>
                                     <td class="actions">
                                     <a href="ambiente.php?id=<?= $reserva->id ?>"
@@ -115,7 +118,7 @@
                 </tbody>
             </table>
         <?php else:
-            echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Fazer reserva' para criar sua primeira reserva.</p></div>";
+            echo "<div class='empty-state'><p>Você ainda não possui reservas.</p><p>Clique em 'Nova reserva' para criar sua primeira reserva.</p></div>";
         endif; ?>
     </div>
 

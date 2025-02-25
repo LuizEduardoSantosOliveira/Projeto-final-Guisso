@@ -261,23 +261,20 @@ header {
     color: var(--color_white_light); 
 }
 
-.visitanteReservas {
-    background-color: var(--color_blue_normal); 
+.header-visitor {
+    color: var(--color_white_normal);
+    padding: 0.5em 1em;
+    border: 1px solid var(--color_white_normal);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: var(--color_red_normal);
 }
 
-.visitanteReservas:hover {
+.header-visitor:hover {
     background-color: var(--color_blue_light); 
     color: var(--color_white_light); 
 }
 
-.loginVisitante {
-    background-color: var(--color_green_normal); 
-}
-
-.loginVisitante:hover {
-    background-color: var(--color_green_light); 
-    color: var(--color_white_light); 
-}
 
 footer {
     background-color: var(--color_normal);
@@ -309,7 +306,10 @@ footer p {
 
 }
 
-/* fim css do cabeçalho*/
+
+
+
+
 
 
 /* Inicio css do menu da home de usuario e admin*/

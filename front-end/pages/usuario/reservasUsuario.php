@@ -30,9 +30,10 @@
         $ultimasReservas = array_slice($reservas, 0, 5);
         ?>
         <div class="container">
-            <div class="header">
-                <a href="ambiente.php" class="btn btn-new">Nova Reserva</a>
-            </div>
+        <div class="header-table">
+            <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Criar reserva</a>' . '</h2>'; ?>
+
+        </div>
 
             <h1>Minhas Reservas</h1>
 
@@ -40,7 +41,7 @@
                 <strong>Total de Reservas:</strong> <?php echo count($reservas); ?>
             </div>
 
-            <?php if (count($ultimasReservas) > 0): ?>
+            <?php if (count($reservas) > 0): ?>
                 <table>
                     <thead>
                         <tr>
@@ -57,7 +58,7 @@
                         <?php
                             $dataHoraAtual = new DateTime('now');
                             $horaAtual = $dataHoraAtual->format('H:i:s');
-                            foreach ($ultimasReservas as $reserva): 
+                            foreach ($reservas as $reserva): 
                         ?>
                             <tr>
                                 <td><?= $reserva->id ?></td>
@@ -90,7 +91,7 @@
                                 <td class="actions">
                                     <a href="ambiente.php?id=<?= $reserva->id ?>"
                                         class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="../../../back-end/excluirCategoria.php?id=<?= $reserva->id ?>"
+                                    <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
                                         class="btn btn-delete"
                                         onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                         <i class="fa-solid fa-trash"></i>

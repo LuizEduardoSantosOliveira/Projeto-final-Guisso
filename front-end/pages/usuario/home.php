@@ -86,9 +86,9 @@
                                 <td><?= $reserva->ambiente->categoria ?></td>
                                 <td><?= $reserva->ambiente->nome ?></td>
                                 <td class="actions">
-                                    <a href="editar_reserva.php?id=<?= $usuario->id ?>"
+                                    <a href="ambiente.php?id=<?= $reserva->id ?>"
                                         class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="../../../back-end/excluirCategoria.php?id=<?= $usuario->id ?>"
+                                    <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
                                         class="btn btn-delete"
                                         onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
                                         <i class="fa-solid fa-trash"></i>
