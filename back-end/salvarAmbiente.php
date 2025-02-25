@@ -17,12 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Verifica se a imagem já existe no banco de dados
         $ambienteExistente = R::findOne('ambiente', 'nome = ? OR hash_imagem = ?', [$_POST['ambient'], $imageHash]);
-
-        if ($ambienteExistente) {
-            header("Location: ../front-end/pages/admin/criarAmbiente.php?erro=Nome ou imagem já existem");
-            exit();
+        if(isset($_POST['id'])){
+            if ($ambienteExistente->id != $_POST['id']) {
+                header("Location: ../front-end/pages/admin/criarAmbiente.php?erro=Nome ou imagem já existem");
+                exit();
+            }
+        }else{
+            if ($ambienteExistente) {
+                header("Location: ../front-end/pages/admin/criarAmbiente.php?erro=Nome ou imagem já existem");
+                exit();
+            }    
         }
-
+        
         // Define o diretório de upload
         $uploadDir = '../uploads/';
         if (!file_exists($uploadDir)) {
@@ -34,17 +40,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         move_uploaded_file($imageTmpPath, $imagePath);
 
         // Criando o ambiente no banco de dados
-        $ambiente = R::dispense('ambiente');
-        $ambiente->nome = $_POST['ambient'];
-        $ambiente->descricao = $_POST['description'];
-        $ambiente->imagem = $imagePath; // Caminho da imagem
-        $ambiente->hash_imagem = $imageHash; // Hash da imagem
+        if(isset($_POST['id'])){
+            $ambiente = R::load('ambiente', $_POST['id']);
+            $ambiente->nome = $_POST['ambient'];
+            $ambiente->descricao = $_POST['description'];
+            $ambiente->imagem = $imagePath; // Caminho da imagem
+            $ambiente->hash_imagem = $imageHash; // Hash da imagem
 
-        $categoria = R::load('categoria', $_POST['category']);
-        $ambiente->categoria = $categoria->nome;
-        $ambiente->id_categoria = $categoria->id;
+            $categoria = R::load('categoria', $_POST['category']);
+            $ambiente->categoria = $categoria->nome;
+            $ambiente->id_categoria = $categoria->id;
 
-        R::store($ambiente);
+            R::store($ambiente);
+        }else{
+            $ambiente = R::dispense('ambiente');
+            $ambiente->nome = $_POST['ambient'];
+            $ambiente->descricao = $_POST['description'];
+            $ambiente->imagem = $imagePath; // Caminho da imagem
+            $ambiente->hash_imagem = $imageHash; // Hash da imagem
+
+            $categoria = R::load('categoria', $_POST['category']);
+            $ambiente->categoria = $categoria->nome;
+            $ambiente->id_categoria = $categoria->id;
+
+            R::store($ambiente);
+        }
         R::close();
 
         header('Location: ../front-end/pages/admin/todosAmbientes.php');
