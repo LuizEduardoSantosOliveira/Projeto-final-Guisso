@@ -49,8 +49,7 @@
                         </div>
 
                         <div class="login-links">
-                            <a href="">Sou visitante</a>
-                            <a href="">Alterar senha</a>
+                            <a href="usuario/ambiente.php?visitante=true">Sou visitante</a>
                         </div>
 
                     </form>

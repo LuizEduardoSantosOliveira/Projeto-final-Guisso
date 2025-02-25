@@ -6,8 +6,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 // Verificar se usuário está logado
-if (!isset($_SESSION['email'])) {
-    header('Location:  ../../../front-end/pages/login.php' );
-    exit;
+if(!isset($_GET['visitante'])){
+    if (!isset($_SESSION['email'])) {
+        header('Location:  ../../../front-end/pages/login.php' );
+        exit;
+    }
 }
 ?>

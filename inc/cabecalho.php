@@ -35,3 +35,11 @@ if (isset($_SESSION['email'])) {
 
     echo '</div>';
 }
+
+if(isset($_GET['visitante'])){
+    echo '<div class="header-login">';
+    echo '<a class="visitanteReservas" href="todasReservas.php?visitante=true">Reservas Cadastradas</a>';
+    echo '<h1 class="username"><i class="fa-solid fa-user"></i>Visitante</h1>';
+    echo '<a class="loginVisitante" href="../login.php">Entrar</a>';
+    echo '</div>';   
+}

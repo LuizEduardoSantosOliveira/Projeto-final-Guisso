@@ -25,4 +25,9 @@
         $ambiente = R::findone('ambiente', 'id = ?', [$id]);
         return $ambiente;
     }
+
+    function buscarUsuarioEmail($email){
+        $usuario = R::findone('usuario', 'email = ?', [$email]);
+        return $usuario;
+    }
 ?>

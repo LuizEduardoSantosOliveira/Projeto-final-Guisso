@@ -27,7 +27,7 @@
                 <li><a href="cadastrarUsuario.php">Cadastrar Usuário</a></li>
                 <li><a href="criarAmbiente.php">Criar Ambiente</a></li>
                 <li><a href="criarCategoria.php">Criar Categoria</a></li>
-                <li><a href="todosUsuarios.php">Todos Usários</a></li>
+                <li><a href="todosUsuarios.php">Todos Usuários</a></li>
                 <li><a href="todosAmbientes.php">Todos Ambientes</a></li>
                 <li><a href="todasCategorias.php">Todas Categorias</a></li>
                 <li><a href="../usuario/todasReservas.php">Todas Reservas</a></li>
