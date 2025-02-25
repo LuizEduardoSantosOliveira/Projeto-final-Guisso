@@ -58,19 +58,24 @@
             }
         ?>
 
-        <label for="type">Tipo</label>
         <?php
-            if(isset($_GET['id'])){
-                echo '<select name="type" id="type" value="'. $usuario->tipo .'">
-                     <option value="admin">Admin</option>
-                     <option value="user">Usuário</option>
-                     </select>';
+            if($_SESSION['type'] === 'root'){
+                echo '<label for="type">Tipo:</label>';
+                if(isset($_GET['id'])){
+                    echo '<select name="type" id="type" value="'. $usuario->tipo .'">
+                         <option value="admin">Admin</option>
+                         <option value="user">Usuário</option>
+                         </select>';
+                }else{
+                    echo '<select name="type" id="type">
+                         <option value="admin">Admin</option>
+                         <option value="user">Usuário</option>
+                         </select>';
+                }
             }else{
-                echo '<select name="type" id="type">
-                     <option value="admin">Admin</option>
-                     <option value="user">Usuário</option>
-                     </select>';
+                echo '<input type="hidden" name="type" id="type" value="user">';
             }
+            
         ?>
 
         <button type="submit">Enviar</button>
