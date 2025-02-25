@@ -61,13 +61,23 @@
                                 <td><?= $usuario->senha ?></td>
                                 <td><?= $usuario->tipo ?></td>
                                 <td class="actions">
-                                    <a href="cadastrarUsuario.php?id=<?= $usuario->id ?>"
-                                        class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="../../../back-end/excluirUsuario.php?id=<?= $usuario->id ?>"
-                                        class="btn btn-delete"
-                                        onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    <?php if($usuario->tipo === 'root'){
+                                        echo '<a href="#"';
+                                        echo 'class="btn btn-edit-blocked"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                        echo '<a href="#"';
+                                        echo 'class="btn btn-delete-blocked"';
+                                        echo 'onclick="return confirm("Tem certeza que deseja excluir esta reserva?")" disabled>';
+                                        echo '<i class="fa-solid fa-trash"></i>';
+                                        echo '</a>';
+                                    }else{
+                                        echo '<a href="cadastrarUsuario.php?id=' . $usuario->id  . '"';
+                                        echo 'class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                        echo '<a href="../../../back-end/excluirUsuario.php?id=' . $usuario->id  . '"';
+                                        echo 'class="btn btn-delete"';
+                                        echo 'onclick="return confirm("Tem certeza que deseja excluir esta reserva?")">';
+                                        echo '<i class="fa-solid fa-trash"></i>';
+                                        echo '</a>';
+                                    } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

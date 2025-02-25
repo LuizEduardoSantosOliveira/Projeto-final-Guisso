@@ -674,6 +674,11 @@ tr:hover {
     color: var(--color_red_normal);
 }
 
+.btn-edit-blocked, .btn-delete-blocked{
+    color: gray;
+    pointer-events: none;
+}
+
 /*fim do css das tabelas */
 
 
