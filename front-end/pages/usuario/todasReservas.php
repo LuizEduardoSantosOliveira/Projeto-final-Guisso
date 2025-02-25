@@ -15,8 +15,11 @@
     include "../../../back-end/buscarTodasReservas.php";
     include "../../../inc/validacao.php";
     include "../../../inc/cabecalho.php";
+    include "../../../back-end/buscarFuncoes.php";
 
-
+    if(isset($_SESSION['email'])){
+        $usuario = buscarUsuarioEmail($_SESSION['email']);
+    }
     ?>
 </header>
 
@@ -26,7 +29,13 @@
     <div class="container">
         <h1>Reservas no sistema</h1>
         <div class="header-table">
-            <?php echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>'; ?>
+            <?php 
+                if(!isset($_GET['visitante'])){
+                    echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '</h2>';
+                }else{
+                    echo '<h2>' . "Total de reservas no sistema: " . count($reservas) . '<a href="ambiente.php" class="btn btn-new">Nova Reserva</a>' . '</h2>';
+                }
+            ?>
         </div>
 
         <div class="stats">
@@ -44,7 +53,12 @@
                         <th>Status</th>
                         <th>Categoria</th>
                         <th>ambiente</th>
-                        <th>Ações</th>
+                        <?php 
+                            if(isset($_SESSION['email'])):
+                            if ($usuario->tipo == 'admin'): 
+                        ?>
+                            <th>Ações</th>
+                        <?php endif; endif; ?>     
                     </tr>
                 </thead>
                 <tbody>
@@ -82,15 +96,20 @@
                             </td>
                             <td><?= $reserva->ambiente->categoria ?></td>
                             <td><?= $reserva->ambiente->nome ?></td>
-                            <td class="actions">
-                                <a href="ambiente.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="../../../back-end/excluirCategoria.php?id=<?= $reserva->id ?>"
-                                    class="btn btn-delete"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+                            <?php
+                                if(isset($_SESSION['email'])):
+                                if ($usuario->tipo == 'admin'):  
+                            ?>
+                                    <td class="actions">
+                                    <a href="ambiente.php?id=<?= $reserva->id ?>"
+                                        class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="../../../back-end/excluirReserva.php?id=<?= $reserva->id ?>"
+                                        class="btn btn-delete"
+                                        onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                    </td>
+                            <?php endif; endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
