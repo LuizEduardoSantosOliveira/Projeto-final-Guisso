@@ -34,7 +34,12 @@
                     }
                    
                     echo '<div class = "card-ambient">';
-                    echo '<h4><a href="' . $linkcalendario . '">' . htmlspecialchars($ambiente->nome) . '</a></h4>';
+                    if(isset($_GET['visitante'])){
+                        echo '<h4>' . htmlspecialchars($ambiente->nome) . '</h4>';
+                    }else{
+                        echo '<h4><a href="' . $linkcalendario . '">' . htmlspecialchars($ambiente->nome) . '</a></h4>';
+                    }
+                    
                     echo '<p>' . htmlspecialchars($ambiente->descricao) . '</p>';
 
                     if (!empty($ambiente->imagem)) {
