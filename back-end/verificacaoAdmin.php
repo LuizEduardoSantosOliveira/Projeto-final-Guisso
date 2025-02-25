@@ -11,7 +11,7 @@ if (!R::testConnection()) {
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$admin = R::findOne('usuario', 'email = ? AND senha = ? AND tipo = ?', [$_GET['email'], $_GET["password"], 'admin']);
+$admin = R::findOne('usuario', 'email = ? AND senha = ? AND (tipo = ? or tipo = ?)', [$_GET['email'], $_GET["password"], 'admin', 'root']);
 
 
 if ($admin) {
